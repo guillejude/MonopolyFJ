@@ -1,8 +1,8 @@
 package edu.ncsu.monopoly;
 
 public abstract class Cell {
-	public static int InflationParameter = 1;
-	public static int NoInflationParameter = 0;
+	public final static int inflationParameter = 1;
+	public final static int noInflationParameter = 0;
 	
 	private boolean available = true;
 	private String name;

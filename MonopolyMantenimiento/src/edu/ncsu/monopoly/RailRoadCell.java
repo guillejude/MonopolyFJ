@@ -2,7 +2,7 @@ package edu.ncsu.monopoly;
 
 public class RailRoadCell extends Cell {
 	static private int baseRent;
-	static public String COLOR_GROUP = "RAILROAD";
+	static final public String COLOR_GROUP = "RAILROAD";
 	static private int price;
 
 	public static void setBaseRent(int baseRent) {

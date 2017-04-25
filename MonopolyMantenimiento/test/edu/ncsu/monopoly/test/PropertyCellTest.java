@@ -1,10 +1,7 @@
-package edu.ncsu.monopoly;
+package edu.ncsu.monopoly.test;
 
 
 
-
-import edu.ncsu.monopoly.test.*;
-import javax.naming.NoInitialContextException;
 
 import edu.ncsu.monopoly.Cell;
 import edu.ncsu.monopoly.GameMaster;
@@ -34,10 +31,10 @@ public class PropertyCellTest extends TestCase {
 		gameMaster.movePlayer(1, cellIndex);
 		cell.playAction();
 		assertEquals(
-				1500 - cell.getRent(Cell.NoInflationParameter),
+				1500 - cell.getRent(Cell.noInflationParameter),
 				gameMaster.getPlayer(1).getMoney());
 		assertEquals(
-				1380 + cell.getRent(Cell.NoInflationParameter),
+				1380 + cell.getRent(Cell.noInflationParameter),
 				gameMaster.getPlayer(0).getMoney());
 	}
 }

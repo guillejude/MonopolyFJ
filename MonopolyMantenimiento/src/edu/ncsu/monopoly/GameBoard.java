@@ -10,7 +10,6 @@ public class GameBoard {
 	//the key of colorGroups is the name of the color group.
 	private Hashtable colorGroups = new Hashtable();
 	private ArrayList communityChestCards = new ArrayList();
-	private GameMaster gameMaster;
 	
 	public GameBoard() {
 		Cell go = new GoCell();
@@ -31,7 +30,7 @@ public class GameBoard {
 	
 	public void addCell(PropertyCell cell) {
 		int propertyNumber = getPropertyNumberForColor(cell.getColorGroup());
-		colorGroups.put(cell.getColorGroup(), new Integer(propertyNumber + 1));
+		colorGroups.put(cell.getColorGroup(), Integer.valueOf(propertyNumber + 1));
         cells.add(cell);
 	}
 

@@ -28,7 +28,7 @@ public class PropertyCell extends Cell {
 			return getParameterlessRent();
 		}
 		else{
-			int rentToCharge = rent * Cell.InflationParameter;
+			int rentToCharge = rent * Cell.inflationParameter;
 			String [] monopolies = owner.getMonopolies();
 			for(int i = 0; i < monopolies.length; i++) {
 				if(monopolies[i].equals(colorGroup)) {
@@ -63,7 +63,7 @@ public class PropertyCell extends Cell {
 		if(!isAvailable()) {
 			currentPlayer = GameMaster.instance().getCurrentPlayer();
 			if(owner != currentPlayer) {
-				currentPlayer.payRentTo(owner, getRent(Cell.InflationParameter));
+				currentPlayer.payRentTo(owner, getRent(Cell.inflationParameter));
 			}
 		}
 	}

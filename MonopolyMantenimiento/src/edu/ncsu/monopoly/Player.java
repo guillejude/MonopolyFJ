@@ -32,7 +32,7 @@ public class Player {
             properties.add(cell);
             colorGroups.put(
                     cell.getColorGroup(), 
-                    new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+                    Integer.valueOf(getPropertyNumberForColor(cell.getColorGroup())+1));
         }
         if(property instanceof RailRoadCell) {
             railroads.add(property);
@@ -76,7 +76,7 @@ public class Player {
 				player.properties.add(cell);
 				colorGroups.put(
 						cell.getColorGroup(), 
-						new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+						Integer.valueOf(getPropertyNumberForColor(cell.getColorGroup())+1));
 			}
 		}
 		properties.clear();
