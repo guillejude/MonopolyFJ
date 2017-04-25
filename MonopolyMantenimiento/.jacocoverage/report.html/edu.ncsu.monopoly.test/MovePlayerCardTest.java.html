@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MovePlayerCardTest.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;MonopolyMantenimiento&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">edu.ncsu.monopoly.test</a> &gt; <span class="el_source">MovePlayerCardTest.java</span></div><h1>MovePlayerCardTest.java</h1><pre class="source lang-java linenums">package edu.ncsu.monopoly.test;
+
+
+
+import edu.ncsu.monopoly.Card;
+import edu.ncsu.monopoly.Cell;
+import edu.ncsu.monopoly.GameMaster;
+import edu.ncsu.monopoly.MovePlayerCard;
+import edu.ncsu.monopoly.test.boardScenarios.GameBoardCCMovePlayer;
+import junit.framework.TestCase;
+
+<span class="nc" id="L12">public class MovePlayerCardTest extends TestCase {</span>
+    GameMaster gameMaster;
+    Card movePlayerCard;
+    
+    protected void setUp() {
+<span class="nc" id="L17">		gameMaster = GameMaster.instance();</span>
+<span class="nc" id="L18">		gameMaster.setGameBoard(new GameBoardCCMovePlayer());</span>
+<span class="nc" id="L19">		gameMaster.setNumberOfPlayers(1);</span>
+<span class="nc" id="L20">		gameMaster.reset();</span>
+<span class="nc" id="L21">		gameMaster.setGUI(new MockGUI());</span>
+<span class="nc" id="L22">		movePlayerCard = new MovePlayerCard(&quot;Blue 1&quot;, Card.TYPE_CC);</span>
+<span class="nc" id="L23">		gameMaster.getGameBoard().addCard(movePlayerCard);</span>
+<span class="nc" id="L24">    }</span>
+    
+    public void testJailCardLabel() {
+<span class="nc" id="L27">        assertEquals(&quot;Go to Blue 1&quot;, movePlayerCard.getLabel());</span>
+<span class="nc" id="L28">    }</span>
+    
+   
+    public void testMovePlayerCardUI() {
+<span class="nc" id="L32">        gameMaster.movePlayer(0, 2);</span>
+<span class="nc" id="L33">        assertTrue(gameMaster.getGUI().isDrawCardButtonEnabled());</span>
+<span class="nc" id="L34">        assertFalse(gameMaster.getGUI().isEndTurnButtonEnabled());</span>
+<span class="nc" id="L35">        gameMaster.btnDrawCardClicked();</span>
+<span class="nc" id="L36">        assertFalse(gameMaster.getGUI().isDrawCardButtonEnabled());</span>
+<span class="nc" id="L37">		Cell cell = gameMaster.getCurrentPlayer().getPosition();</span>
+<span class="nc" id="L38">		assertEquals(gameMaster.getGameBoard().queryCell(&quot;Blue 1&quot;), cell);</span>
+<span class="nc" id="L39">		assertTrue(gameMaster.getGUI().isEndTurnButtonEnabled());</span>
+<span class="nc" id="L40">		assertEquals(1700, gameMaster.getCurrentPlayer().getMoney());</span>
+<span class="nc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

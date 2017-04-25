@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>GameboardTest.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;MonopolyMantenimiento&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">edu.ncsu.monopoly.test</a> &gt; <span class="el_source">GameboardTest.java</span></div><h1>GameboardTest.java</h1><pre class="source lang-java linenums">package edu.ncsu.monopoly.test;
+
+
+
+import edu.ncsu.monopoly.Cell;
+import edu.ncsu.monopoly.GameBoard;
+import edu.ncsu.monopoly.PropertyCell;
+import edu.ncsu.monopoly.SimpleGameBoard;
+import junit.framework.TestCase;
+
+
+<span class="nc" id="L12">public class GameboardTest extends TestCase {</span>
+
+	Cell cell;
+	GameBoard gameBoard;
+	
+	protected void setUp() throws Exception {
+<span class="nc" id="L18">		gameBoard = new GameBoard();</span>
+<span class="nc" id="L19">		cell = new PropertyCell();</span>
+<span class="nc" id="L20">		cell.setName(&quot;TempCell&quot;);</span>
+<span class="nc" id="L21">	}</span>
+
+	public void testAddCell() {
+<span class="nc" id="L24">		assertEquals(1, gameBoard.getCellNumber());</span>
+<span class="nc" id="L25">		gameBoard.addCell(cell);</span>
+<span class="nc" id="L26">		assertEquals(2, gameBoard.getCellNumber());</span>
+<span class="nc" id="L27">	}</span>
+	
+	public void testCellsForMonopoly() {
+<span class="nc" id="L30">		GameBoard gb = new SimpleGameBoard();</span>
+<span class="nc" id="L31">		PropertyCell[] properties = gb.getPropertiesInMonopoly(&quot;blue&quot;);</span>
+<span class="nc" id="L32">		assertEquals(&quot;Blue 1&quot;, properties[0].getName());</span>
+<span class="nc" id="L33">		assertEquals(&quot;Blue 2&quot;, properties[1].getName());</span>
+<span class="nc" id="L34">		assertEquals(&quot;Blue 3&quot;, properties[2].getName());</span>
+<span class="nc" id="L35">		assertEquals(3, properties.length);</span>
+<span class="nc" id="L36">	}</span>
+	
+	public void testPropertyNumberForColor() {
+<span class="nc" id="L39">		PropertyCell cell1 = new PropertyCell();</span>
+<span class="nc" id="L40">		cell1.setName(&quot;Blue 1&quot;);</span>
+<span class="nc" id="L41">		cell1.setColorGroup(&quot;blue&quot;);</span>
+<span class="nc" id="L42">		PropertyCell cell2 = new PropertyCell();</span>
+<span class="nc" id="L43">		cell2.setName(&quot;Blue 2&quot;);</span>
+<span class="nc" id="L44">		cell2.setColorGroup(&quot;blue&quot;);</span>
+<span class="nc" id="L45">		PropertyCell cell3 = new PropertyCell();</span>
+<span class="nc" id="L46">		cell3.setName(&quot;Green 1&quot;);</span>
+<span class="nc" id="L47">		cell3.setColorGroup(&quot;green&quot;);</span>
+		
+<span class="nc" id="L49">		gameBoard.addCell(cell1);</span>
+<span class="nc" id="L50">		gameBoard.addCell(cell2);</span>
+<span class="nc" id="L51">		gameBoard.addCell(cell3);</span>
+<span class="nc" id="L52">		assertEquals(2, gameBoard.getPropertyNumberForColor(&quot;blue&quot;));</span>
+<span class="nc" id="L53">		assertEquals(1, gameBoard.getPropertyNumberForColor(&quot;green&quot;));</span>
+<span class="nc" id="L54">	}</span>
+	
+	public void testQueryCell() {
+<span class="nc" id="L57">		gameBoard.addCell(cell);</span>
+<span class="nc" id="L58">		assertSame(cell,gameBoard.queryCell(&quot;TempCell&quot;));</span>
+<span class="nc" id="L59">	}</span>
+	
+	public void testQueryCellIndex() {
+<span class="nc" id="L62">		gameBoard.addCell(cell);</span>
+<span class="nc" id="L63">		assertEquals(0,gameBoard.queryCellIndex(&quot;Go&quot;));</span>
+<span class="nc" id="L64">		assertEquals(1,gameBoard.queryCellIndex(&quot;TempCell&quot;));</span>
+<span class="nc" id="L65">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
