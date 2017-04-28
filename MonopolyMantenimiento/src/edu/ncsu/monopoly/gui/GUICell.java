@@ -44,9 +44,13 @@ public class GUICell extends JPanel {
 
     private void createPlayerLabels(JPanel pnlPlayer) {
 		for (int i = 0; i < GameMaster.MAX_PLAYER; i++) {
-			lblPlayers[i] = new JLabel();
-			lblPlayers[i].setBackground(Color.GREEN);
-			pnlPlayer.add(lblPlayers[i]);
+                    lblPlayers[i] = new JLabel();
+                    if(i < GameMaster.instance().getNumberOfPlayers()){
+                        lblPlayers[i].setBackground(GameMaster.instance().getPlayer(i).getPlayerColor());
+                    }else{
+                        lblPlayers[i].setBackground(Color.GREEN);
+                    }
+                    pnlPlayer.add(lblPlayers[i]);
 		}
 	}
 

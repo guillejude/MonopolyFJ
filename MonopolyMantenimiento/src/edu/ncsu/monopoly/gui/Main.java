@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.test.boardScenarios.GameBoardFull;
+import java.awt.Color;
 
 public class Main {
 
@@ -73,7 +74,16 @@ public class Main {
 		for(int i = 0; i < numPlayers; i++) {
 			String name = 
 				JOptionPane.showInputDialog(window, "Please input name for Player " + (i+1));
-			GameMaster.instance().getPlayer(i).setName(name);
+                        GameMaster.instance().getPlayer(i).setName(name);
+                        String color = 
+                                JOptionPane.showInputDialog(window, "Please input color for Player " + (i+1));
+                        if(color.equals("yellow")){
+                            GameMaster.instance().getPlayer(i).setPlayerColor(Color.yellow);
+                        }
+                        if(color.equals("red")){
+                            GameMaster.instance().getPlayer(i).setPlayerColor(Color.red);
+                        }
+                        
 		}
 		window.setupGameBoard(gameBoard);
 		window.show();

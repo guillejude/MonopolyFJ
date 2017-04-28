@@ -1,11 +1,14 @@
 package edu.ncsu.monopoly;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 
 public class Player {
+        private Color playerColor;
+    
 	//the key of colorGroups is the name of the color group.
 	private Hashtable colorGroups = new Hashtable();
 	private boolean inJail;
@@ -23,6 +26,7 @@ public class Player {
 		if(gb != null) {
 			position = gb.queryCell("Go");
 		}
+                playerColor = Color.GREEN;
 	}
 
     public void buyProperty(Cell property, int amount) {
@@ -269,4 +273,14 @@ public class Player {
     public void payRentToBank(int ammount){
     	this.money -= ammount;
     }
+
+    public Color getPlayerColor() {
+        return playerColor;
+    }
+
+    public void setPlayerColor(Color playerColor) {
+        this.playerColor = playerColor;
+    }
+    
+    
 }
