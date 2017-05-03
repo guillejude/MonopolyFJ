@@ -28,7 +28,7 @@
 <span class="fc" id="L28">			return getParameterlessRent();</span>
 		}
 		else{
-<span class="fc" id="L31">			int rentToCharge = rent * Cell.InflationParameter;</span>
+<span class="fc" id="L31">			int rentToCharge = rent * Cell.inflationParameter;</span>
 <span class="fc" id="L32">			String [] monopolies = owner.getMonopolies();</span>
 <span class="pc bpc" id="L33" title="1 of 2 branches missed.">			for(int i = 0; i &lt; monopolies.length; i++) {</span>
 <span class="nc bnc" id="L34" title="All 2 branches missed.">				if(monopolies[i].equals(colorGroup)) {</span>
@@ -63,7 +63,7 @@
 <span class="pc bpc" id="L63" title="1 of 2 branches missed.">		if(!isAvailable()) {</span>
 <span class="fc" id="L64">			currentPlayer = GameMaster.instance().getCurrentPlayer();</span>
 <span class="fc bfc" id="L65" title="All 2 branches covered.">			if(owner != currentPlayer) {</span>
-<span class="fc" id="L66">				currentPlayer.payRentTo(owner, getRent(Cell.InflationParameter));</span>
+<span class="fc" id="L66">				currentPlayer.payRentTo(owner, getRent(Cell.inflationParameter));</span>
 			}
 		}
 <span class="fc" id="L69">	}</span>

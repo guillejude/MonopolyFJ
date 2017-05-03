@@ -23,202 +23,224 @@ import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.MonopolyGUI;
 import edu.ncsu.monopoly.Player;
 
-public class MainWindow extends JFrame implements MonopolyGUI{
-<span class="nc" id="L27">	JPanel eastPanel = new JPanel();</span>
-<span class="nc" id="L28">	ArrayList guiCells = new ArrayList();</span>
+public class MainWindow extends JFrame implements MonopolyGUI {
 
-<span class="nc" id="L30">	JPanel northPanel = new JPanel();</span>
-	PlayerPanel[] playerPanels;
-<span class="nc" id="L32">	JPanel southPanel = new JPanel();</span>
-<span class="nc" id="L33">	JPanel westPanel = new JPanel();</span>
+<span class="nc" id="L28">    JPanel eastPanel = new JPanel();</span>
+<span class="nc" id="L29">    ArrayList guiCells = new ArrayList();</span>
 
-<span class="nc" id="L35">	public MainWindow() {</span>
-<span class="nc" id="L36">		northPanel.setBorder(new LineBorder(Color.BLACK));</span>
-<span class="nc" id="L37">		southPanel.setBorder(new LineBorder(Color.BLACK));</span>
-<span class="nc" id="L38">		westPanel.setBorder(new LineBorder(Color.BLACK));</span>
-<span class="nc" id="L39">		eastPanel.setBorder(new LineBorder(Color.BLACK));</span>
-		
-<span class="nc" id="L41">		Container c = getContentPane();</span>
-		//setSize(800, 600);
-<span class="nc" id="L43">		Toolkit tk = Toolkit.getDefaultToolkit();</span>
-<span class="nc" id="L44">		Dimension d = tk.getScreenSize();</span>
-<span class="nc" id="L45">		setSize(d);</span>
-<span class="nc" id="L46">		c.add(northPanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L47">		c.add(southPanel, BorderLayout.SOUTH);</span>
-<span class="nc" id="L48">		c.add(eastPanel, BorderLayout.EAST);</span>
-<span class="nc" id="L49">		c.add(westPanel, BorderLayout.WEST);</span>
-		
-<span class="nc" id="L51">		this.addWindowListener(new WindowAdapter(){</span>
-			public void windowClosing(WindowEvent e) {
-<span class="nc" id="L53">				System.exit(0);</span>
-<span class="nc" id="L54">			}</span>
-		});
-<span class="nc" id="L56">	}</span>
-	
-	private void addCells(JPanel panel, List cells) {
-<span class="nc bnc" id="L59" title="All 2 branches missed.">		for(int x=0; x&lt;cells.size(); x++) {</span>
-<span class="nc" id="L60">			GUICell cell = new GUICell((Cell)cells.get(x));</span>
-<span class="nc" id="L61">			panel.add(cell);</span>
-<span class="nc" id="L62">			guiCells.add(cell);</span>
-		}
-<span class="nc" id="L64">	}</span>
-	
-	private void buildPlayerPanels() {
-<span class="nc" id="L67">		GameMaster master = GameMaster.instance();</span>
-<span class="nc" id="L68">		JPanel infoPanel = new JPanel();</span>
-<span class="nc" id="L69">        int players = master.getNumberOfPlayers();</span>
-<span class="nc" id="L70">        infoPanel.setLayout(new GridLayout(2, (players+1)/2));</span>
-<span class="nc" id="L71">		getContentPane().add(infoPanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L72">		playerPanels = new PlayerPanel[master.getNumberOfPlayers()];</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">		for (int i = 0; i&lt; master.getNumberOfPlayers(); i++){</span>
-<span class="nc" id="L74">			playerPanels[i] = new PlayerPanel(master.getPlayer(i));</span>
-<span class="nc" id="L75">			infoPanel.add(playerPanels[i]);</span>
-<span class="nc" id="L76">			playerPanels[i].displayInfo();</span>
-		}
-<span class="nc" id="L78">	}</span>
+<span class="nc" id="L31">    JPanel northPanel = new JPanel();</span>
+    PlayerPanel[] playerPanels;
+<span class="nc" id="L33">    JPanel southPanel = new JPanel();</span>
+<span class="nc" id="L34">    JPanel westPanel = new JPanel();</span>
 
-	public void enableEndTurnBtn(int playerIndex) {
-<span class="nc" id="L81">		playerPanels[playerIndex].setEndTurnEnabled(true);</span>
-<span class="nc" id="L82">	}</span>
-	
-	public void enablePlayerTurn(int playerIndex) {
-<span class="nc" id="L85">		playerPanels[playerIndex].setRollDiceEnabled(true);</span>
-		
-<span class="nc" id="L87">	}</span>
+<span class="nc" id="L36">    public MainWindow() {</span>
+<span class="nc" id="L37">        northPanel.setBorder(new LineBorder(Color.BLACK));</span>
+<span class="nc" id="L38">        southPanel.setBorder(new LineBorder(Color.BLACK));</span>
+<span class="nc" id="L39">        westPanel.setBorder(new LineBorder(Color.BLACK));</span>
+<span class="nc" id="L40">        eastPanel.setBorder(new LineBorder(Color.BLACK));</span>
 
-	public void enablePurchaseBtn(int playerIndex) {
-<span class="nc" id="L90">		playerPanels[playerIndex].setPurchasePropertyEnabled(true);</span>
-<span class="nc" id="L91">	}</span>
+<span class="nc" id="L42">        Container c = getContentPane();</span>
+        //setSize(800, 600);
+<span class="nc" id="L44">        Toolkit tk = Toolkit.getDefaultToolkit();</span>
+<span class="nc" id="L45">        Dimension d = tk.getScreenSize();</span>
+<span class="nc" id="L46">        setSize(d);</span>
+<span class="nc" id="L47">        c.add(northPanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L48">        c.add(southPanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L49">        c.add(eastPanel, BorderLayout.EAST);</span>
+<span class="nc" id="L50">        c.add(westPanel, BorderLayout.WEST);</span>
 
-	public int[] getDiceRoll() {
-<span class="nc" id="L94">		TestDiceRollDialog dialog = new TestDiceRollDialog(this);</span>
-<span class="nc" id="L95">		dialog.show();</span>
-<span class="nc" id="L96">		return dialog.getDiceRoll();</span>
-	}
+<span class="nc" id="L52">        this.addWindowListener(new WindowAdapter() {</span>
+            public void windowClosing(WindowEvent e) {
+<span class="nc" id="L54">                System.exit(0);</span>
+<span class="nc" id="L55">            }</span>
+        });
+<span class="nc" id="L57">    }</span>
+
+    private void addCells(JPanel panel, List cells) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        for (int x = 0; x &lt; cells.size(); x++) {</span>
+<span class="nc" id="L61">            GUICell cell = new GUICell((Cell) cells.get(x));</span>
+<span class="nc" id="L62">            panel.add(cell);</span>
+<span class="nc" id="L63">            guiCells.add(cell);</span>
+        }
+<span class="nc" id="L65">    }</span>
+
+    private void buildPlayerPanels() {
+<span class="nc" id="L68">        GameMaster master = GameMaster.instance();</span>
+<span class="nc" id="L69">        JPanel infoPanel = new JPanel();</span>
+<span class="nc" id="L70">        int players = master.getNumberOfPlayers();</span>
+<span class="nc" id="L71">        infoPanel.setLayout(new GridLayout(2, (players + 1) / 2));</span>
+<span class="nc" id="L72">        getContentPane().add(infoPanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L73">        playerPanels = new PlayerPanel[master.getNumberOfPlayers()];</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        for (int i = 0; i &lt; master.getNumberOfPlayers(); i++) {</span>
+<span class="nc" id="L75">            playerPanels[i] = new PlayerPanel(master.getPlayer(i));</span>
+<span class="nc" id="L76">            infoPanel.add(playerPanels[i]);</span>
+<span class="nc" id="L77">            playerPanels[i].displayInfo();</span>
+        }
+<span class="nc" id="L79">    }</span>
+
+    public void enableEndTurnBtn(int playerIndex) {
+<span class="nc" id="L82">        playerPanels[playerIndex].setEndTurnEnabled(true);</span>
+<span class="nc" id="L83">    }</span>
+
+    public void enablePlayerTurn(int playerIndex) {
+<span class="nc" id="L86">        playerPanels[playerIndex].setRollDiceEnabled(true);</span>
+
+<span class="nc" id="L88">    }</span>
+
+    public void enablePurchaseBtn(int playerIndex) {
+<span class="nc" id="L91">        playerPanels[playerIndex].setPurchasePropertyEnabled(true);</span>
+<span class="nc" id="L92">    }</span>
+
+    public int[] getDiceRoll() {
+<span class="nc" id="L95">        TestDiceRollDialog dialog = new TestDiceRollDialog(this);</span>
+<span class="nc" id="L96">        dialog.show();</span>
+<span class="nc" id="L97">        return dialog.getDiceRoll();</span>
+    }
 
     public boolean isDrawCardButtonEnabled() {
-<span class="nc" id="L100">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L101">        return playerPanels[currentPlayerIndex].isDrawCardButtonEnabled();</span>
+<span class="nc" id="L101">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L102">        return playerPanels[currentPlayerIndex].isDrawCardButtonEnabled();</span>
     }
 
     public boolean isEndTurnButtonEnabled() {
-<span class="nc" id="L105">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L106">        return playerPanels[currentPlayerIndex].isEndTurnButtonEnabled();</span>
+<span class="nc" id="L106">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L107">        return playerPanels[currentPlayerIndex].isEndTurnButtonEnabled();</span>
     }
 
-	public boolean isGetOutOfJailButtonEnabled() {
-<span class="nc" id="L110">		int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L111">		return playerPanels[currentPlayerIndex].isGetOutOfJailButtonEnabled();</span>
-	}
+    public boolean isGetOutOfJailButtonEnabled() {
+<span class="nc" id="L111">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L112">        return playerPanels[currentPlayerIndex].isGetOutOfJailButtonEnabled();</span>
+    }
 
     public boolean isTradeButtonEnabled(int i) {
-<span class="nc" id="L115">        return playerPanels[i].isTradeButtonEnabled();</span>
+<span class="nc" id="L116">        return playerPanels[i].isTradeButtonEnabled();</span>
     }
-	
-	public void movePlayer(int index, int from, int to) {
-<span class="nc" id="L119">		GUICell fromCell = queryCell(from);</span>
-<span class="nc" id="L120">		GUICell toCell = queryCell(to);</span>
-<span class="nc" id="L121">		fromCell.removePlayer(index);</span>
-<span class="nc" id="L122">		toCell.addPlayer(index);</span>
-<span class="nc" id="L123">	}</span>
+
+    public void movePlayer(int index, int from, int to) {
+<span class="nc" id="L120">        GUICell fromCell = queryCell(from);</span>
+<span class="nc" id="L121">        GUICell toCell = queryCell(to);</span>
+<span class="nc" id="L122">        fromCell.removePlayer(index);</span>
+<span class="nc" id="L123">        toCell.addPlayer(index);</span>
+<span class="nc" id="L124">    }</span>
 
     public RespondDialog openRespondDialog(TradeDeal deal) {
-<span class="nc" id="L126">        GUIRespondDialog dialog = new GUIRespondDialog();</span>
-<span class="nc" id="L127">        dialog.setDeal(deal);</span>
-<span class="nc" id="L128">        dialog.show();</span>
-<span class="nc" id="L129">        return dialog;</span>
+<span class="nc" id="L127">        GUIRespondDialog dialog = new GUIRespondDialog();</span>
+<span class="nc" id="L128">        dialog.setDeal(deal);</span>
+<span class="nc" id="L129">        dialog.show();</span>
+<span class="nc" id="L130">        return dialog;</span>
     }
 
     public TradeDialog openTradeDialog() {
-<span class="nc" id="L133">        GUITradeDialog dialog = new GUITradeDialog(this);</span>
-<span class="nc" id="L134">        dialog.show();</span>
-<span class="nc" id="L135">        return dialog;</span>
+<span class="nc" id="L134">        GUITradeDialog dialog = new GUITradeDialog(this);</span>
+<span class="nc" id="L135">        dialog.show();</span>
+<span class="nc" id="L136">        return dialog;</span>
     }
-	
-	private GUICell queryCell(int index) {
-<span class="nc" id="L139">		Cell cell = GameMaster.instance().getGameBoard().getCell(index);</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">		for(int x = 0; x &lt; guiCells.size(); x++) {</span>
-<span class="nc" id="L141">			GUICell guiCell = (GUICell)guiCells.get(x);</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">			if(guiCell.getCell() == cell) return guiCell;</span>
-		}
-<span class="nc" id="L144">		return null;</span>
-	}
+
+    private GUICell queryCell(int index) {
+<span class="nc" id="L140">        Cell cell = GameMaster.instance().getGameBoard().getCell(index);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        for (int x = 0; x &lt; guiCells.size(); x++) {</span>
+<span class="nc" id="L142">            GUICell guiCell = (GUICell) guiCells.get(x);</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">            if (guiCell.getCell() == cell) {</span>
+<span class="nc" id="L144">                return guiCell;</span>
+            }
+        }
+<span class="nc" id="L147">        return null;</span>
+    }
 
     public void setBuyHouseEnabled(boolean b) {
-<span class="nc" id="L148">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L149">        playerPanels[currentPlayerIndex].setBuyHouseEnabled(b);</span>
-<span class="nc" id="L150">    }</span>
+<span class="nc" id="L151">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L152">        playerPanels[currentPlayerIndex].setBuyHouseEnabled(b);</span>
+<span class="nc" id="L153">    }</span>
 
     public void setDrawCardEnabled(boolean b) {
-<span class="nc" id="L153">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L154">        playerPanels[currentPlayerIndex].setDrawCardEnabled(b);</span>
-<span class="nc" id="L155">    }</span>
+<span class="nc" id="L156">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L157">        playerPanels[currentPlayerIndex].setDrawCardEnabled(b);</span>
+<span class="nc" id="L158">    }</span>
 
     public void setEndTurnEnabled(boolean enabled) {
-<span class="nc" id="L158">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L159">        playerPanels[currentPlayerIndex].setEndTurnEnabled(enabled);</span>
-<span class="nc" id="L160">    }</span>
+<span class="nc" id="L161">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L162">        playerPanels[currentPlayerIndex].setEndTurnEnabled(enabled);</span>
+<span class="nc" id="L163">    }</span>
 
     public void setGetOutOfJailEnabled(boolean b) {
-<span class="nc" id="L163">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L164">        playerPanels[currentPlayerIndex].setGetOutOfJailEnabled(b);</span>
-<span class="nc" id="L165">    }</span>
+<span class="nc" id="L166">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L167">        playerPanels[currentPlayerIndex].setGetOutOfJailEnabled(b);</span>
+<span class="nc" id="L168">    }</span>
 
     public void setPurchasePropertyEnabled(boolean enabled) {
-<span class="nc" id="L168">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L169">        playerPanels[currentPlayerIndex].setPurchasePropertyEnabled(enabled);</span>
-<span class="nc" id="L170">    }</span>
+<span class="nc" id="L171">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L172">        playerPanels[currentPlayerIndex].setPurchasePropertyEnabled(enabled);</span>
+<span class="nc" id="L173">    }</span>
 
     public void setRollDiceEnabled(boolean b) {
-<span class="nc" id="L173">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
-<span class="nc" id="L174">        playerPanels[currentPlayerIndex].setRollDiceEnabled(b);</span>
-<span class="nc" id="L175">    }</span>
+<span class="nc" id="L176">        int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();</span>
+<span class="nc" id="L177">        playerPanels[currentPlayerIndex].setRollDiceEnabled(b);</span>
+<span class="nc" id="L178">    }</span>
 
     public void setTradeEnabled(int index, boolean b) {
-<span class="nc" id="L178">        playerPanels[index].setTradeEnabled(b);</span>
-<span class="nc" id="L179">    }</span>
-	
-	public void setupGameBoard(GameBoard board) {
-<span class="nc" id="L182">		Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());</span>
-<span class="nc" id="L183">		northPanel.setLayout(new GridLayout(1, dimension.width + 2));</span>
-<span class="nc" id="L184">		southPanel.setLayout(new GridLayout(1, dimension.width + 2));</span>
-<span class="nc" id="L185">		westPanel.setLayout(new GridLayout(dimension.height, 1));</span>
-<span class="nc" id="L186">		eastPanel.setLayout(new GridLayout(dimension.height, 1));</span>
-<span class="nc" id="L187">		addCells(northPanel, GameBoardUtil.getNorthCells(board));</span>
-<span class="nc" id="L188">		addCells(southPanel, GameBoardUtil.getSouthCells(board));</span>
-<span class="nc" id="L189">		addCells(eastPanel, GameBoardUtil.getEastCells(board));</span>
-<span class="nc" id="L190">		addCells(westPanel, GameBoardUtil.getWestCells(board));</span>
-<span class="nc" id="L191">		buildPlayerPanels();</span>
-<span class="nc" id="L192">	}</span>
+<span class="nc" id="L181">        playerPanels[index].setTradeEnabled(b);</span>
+<span class="nc" id="L182">    }</span>
+
+    public void setupGameBoard(GameBoard board) {
+<span class="nc" id="L185">        Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());</span>
+<span class="nc" id="L186">        northPanel.setLayout(new GridLayout(1, dimension.width + 2));</span>
+<span class="nc" id="L187">        southPanel.setLayout(new GridLayout(1, dimension.width + 2));</span>
+<span class="nc" id="L188">        westPanel.setLayout(new GridLayout(dimension.height, 1));</span>
+<span class="nc" id="L189">        eastPanel.setLayout(new GridLayout(dimension.height, 1));</span>
+<span class="nc" id="L190">        addCells(northPanel, GameBoardUtil.getNorthCells(board));</span>
+<span class="nc" id="L191">        addCells(southPanel, GameBoardUtil.getSouthCells(board));</span>
+<span class="nc" id="L192">        addCells(eastPanel, GameBoardUtil.getEastCells(board));</span>
+<span class="nc" id="L193">        addCells(westPanel, GameBoardUtil.getWestCells(board));</span>
+<span class="nc" id="L194">        buildPlayerPanels();</span>
+<span class="nc" id="L195">    }</span>
 
     public void showBuyHouseDialog(Player currentPlayer) {
-<span class="nc" id="L195">        BuyHouseDialog dialog = new BuyHouseDialog(currentPlayer);</span>
-<span class="nc" id="L196">        dialog.show();</span>
-<span class="nc" id="L197">    }</span>
+<span class="nc" id="L198">        BuyHouseDialog dialog = new BuyHouseDialog(currentPlayer);</span>
+<span class="nc" id="L199">        dialog.show();</span>
+<span class="nc" id="L200">    }</span>
 
     public void showMessage(String msg) {
-<span class="nc" id="L200">		JOptionPane.showMessageDialog(this, msg);</span>
-<span class="nc" id="L201">    }</span>
+<span class="nc" id="L203">        JOptionPane.showMessageDialog(this, msg);</span>
+<span class="nc" id="L204">    }</span>
 
-	public int showUtilDiceRoll() {
-<span class="nc" id="L204">		return UtilDiceRoll.showDialog();</span>
-	}
+    public int showUtilDiceRoll() {
+<span class="nc" id="L207">        return UtilDiceRoll.showDialog();</span>
+    }
 
-	public void startGame() {
-<span class="nc" id="L208">		int numberOfPlayers = GameMaster.instance().getNumberOfPlayers();</span>
-<span class="nc bnc" id="L209" title="All 2 branches missed.">		for(int i = 0; i &lt; numberOfPlayers; i++) {</span>
-<span class="nc" id="L210">			movePlayer(i, 0, 0);</span>
-		}
-<span class="nc" id="L212">	}</span>
+    public void startGame() {
+<span class="nc" id="L211">        int numberOfPlayers = GameMaster.instance().getNumberOfPlayers();</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        for (int i = 0; i &lt; numberOfPlayers; i++) {</span>
+<span class="nc" id="L213">            movePlayer(i, 0, 0);</span>
+        }
+<span class="nc" id="L215">    }</span>
 
-	public void update() {
-<span class="nc bnc" id="L215" title="All 2 branches missed.">		for(int i = 0; i &lt; playerPanels.length; i++) {</span>
-<span class="nc" id="L216">			playerPanels[i].displayInfo();</span>
-		}
-<span class="nc bnc" id="L218" title="All 2 branches missed.">		for(int j = 0; j &lt; guiCells.size(); j++ ) {</span>
-<span class="nc" id="L219">			GUICell cell = (GUICell)guiCells.get(j);</span>
-<span class="nc" id="L220">			cell.displayInfo();</span>
-		}
-<span class="nc" id="L222">	}</span>
+    public void update() {
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        for (int i = 0; i &lt; playerPanels.length; i++) {</span>
+<span class="nc" id="L219">            playerPanels[i].displayInfo();</span>
+        }
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        for (int j = 0; j &lt; guiCells.size(); j++) {</span>
+<span class="nc" id="L222">            GUICell cell = (GUICell) guiCells.get(j);</span>
+<span class="nc" id="L223">            cell.displayInfo();</span>
+        }
+<span class="nc" id="L225">    }</span>
+
+    public int showTaxiMovement() {
+<span class="nc" id="L228">        int movement = 0;</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">        while (movement == 0) {</span>
+<span class="nc" id="L230">            String movementInput = JOptionPane.showInputDialog(this, &quot;Enter the number of spaces you wish to move (1-6)&quot;);</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">            if (movementInput != null) {</span>
+                try {
+<span class="nc" id="L233">                    movement = Integer.parseInt(movementInput);</span>
+<span class="nc bnc" id="L234" title="All 4 branches missed.">                    if (movement &lt;= 0 || movement &gt; 6) {</span>
+<span class="nc" id="L235">                        JOptionPane.showMessageDialog(this, &quot;Please input a number between one and six&quot;);</span>
+<span class="nc" id="L236">                        movement = 0;</span>
+                    }
+<span class="nc" id="L238">                } catch (NumberFormatException e) {</span>
+<span class="nc" id="L239">                    JOptionPane.showMessageDialog(this, &quot;Please input a number&quot;);</span>
+<span class="nc" id="L240">                }</span>
+            }
+<span class="nc" id="L242">        }</span>
+<span class="nc" id="L243">        return movement;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

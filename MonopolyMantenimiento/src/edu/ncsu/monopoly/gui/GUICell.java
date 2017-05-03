@@ -46,7 +46,7 @@ public class GUICell extends JPanel {
         Image image = foto.getImage();
         Image newimg = image.getScaledInstance(45, 50, java.awt.Image.SCALE_SMOOTH); 
         foto = new ImageIcon(newimg);
-        lblPlayers[index].setIcon(foto);
+        //lblPlayers[index].setIcon(foto);
     }
 
     private void createPlayerLabels(JPanel pnlPlayer) {
