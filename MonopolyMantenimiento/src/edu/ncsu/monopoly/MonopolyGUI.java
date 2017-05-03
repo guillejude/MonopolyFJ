@@ -24,4 +24,6 @@ public interface MonopolyGUI {
 	public int showUtilDiceRoll();
 	public void startGame();
 	public void update();
+        
+        public int showTaxiMovement();
 }
