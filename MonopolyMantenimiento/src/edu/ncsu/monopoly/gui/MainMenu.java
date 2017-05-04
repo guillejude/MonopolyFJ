@@ -5,15 +5,19 @@
  */
 package edu.ncsu.monopoly.gui;
 
+import edu.ncsu.monopoly.GameSystem;
+
 /**
  *
  * @author Guillermo
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    GameSystem system;
     
-    public MainMenu() {
+    public MainMenu(GameSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -42,6 +46,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnAddUserProfile.setText("ADD USER PROFILE");
+        btnAddUserProfile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddUserProfileMouseClicked(evt);
+            }
+        });
 
         jButton1.setText("VIEW PROFILE");
 
@@ -85,6 +94,13 @@ public class MainMenu extends javax.swing.JFrame {
         this.setEnabled(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnPlayMouseClicked
+
+    private void btnAddUserProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserProfileMouseClicked
+        AddUser addUserWindow = new AddUser(this, system);
+        addUserWindow.setVisible(true);
+        this.setEnabled(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAddUserProfileMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

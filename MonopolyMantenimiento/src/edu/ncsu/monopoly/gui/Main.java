@@ -74,7 +74,8 @@ public class Main {
         window.show();
         master.setGUI(window);
         master.startGame();*/
-        MainMenu mainMenuWindow = new MainMenu();
+        GameSystem system = new GameSystem();
+        MainMenu mainMenuWindow = new MainMenu(system);
         mainMenuWindow.setVisible(true);
     }
 }
