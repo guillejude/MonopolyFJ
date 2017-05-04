@@ -24,19 +24,20 @@ public class GameSetUp extends javax.swing.JFrame {
     private final JFrame parent;
     private int numberOfPlayers;
     private int playerNumber;
-    private ArrayList<String> players;
-    private ArrayList<Color> playerColors;
+    private ArrayList<Player> players;
+    private Color currentColor;
 
     public GameSetUp(JFrame parent) {
         initComponents();
         this.parent = parent;
         this.playerNumber = 1;
         this.numberOfPlayers = 1;
-        players = new ArrayList<>();
-        playerColors = new ArrayList<>();
+        this.players = new ArrayList<>();
+        this.currentColor = Color.GREEN;
     }
 
     public void startGame() {
+        //opens game window and starts game
         GameMaster master = GameMaster.instance();
         MainWindow window = new MainWindow();
         GameBoard gameBoard = null;
@@ -46,8 +47,8 @@ public class GameSetUp extends javax.swing.JFrame {
         //meto los jugadores
         for (int i = 0; i < numberOfPlayers; i++) {
             Player player = master.getPlayer(i);
-            player.setName((String)players.get(i));
-            player.setPlayerColor(playerColors.get(i));
+            player.setName((String) players.get(i).getName());
+            player.setPlayerColor(players.get(i).getPlayerColor());
         }
         window.setupGameBoard(gameBoard);
         window.show();
@@ -71,9 +72,7 @@ public class GameSetUp extends javax.swing.JFrame {
         txtFldPlayerName = new javax.swing.JTextField();
         lblPlayerInfo = new javax.swing.JLabel();
         btnInputInfo = new javax.swing.JButton();
-        lblPlayerColor = new javax.swing.JLabel();
-        cmbBxPlayerColor = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        btnChooseColor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -109,14 +108,10 @@ public class GameSetUp extends javax.swing.JFrame {
             }
         });
 
-        lblPlayerColor.setText("Player Color:");
-
-        cmbBxPlayerColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnChooseColor.setText("Choose a Color");
+        btnChooseColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnChooseColorMouseClicked(evt);
             }
         });
 
@@ -124,35 +119,31 @@ public class GameSetUp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnChooseColor)
+                .addGap(136, 136, 136))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(btnInputInfo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(cmbBxPlayerColor, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(162, 162, 162)
+                        .addComponent(lblGameSetUp))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(lblNumPlayers)
+                        .addGap(34, 34, 34)
+                        .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(lblPlayerName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(lblGameSetUp))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(lblNumPlayers)
-                                .addGap(34, 34, 34)
-                                .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblPlayerColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblPlayerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPlayerInfo)
-                                    .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(lblPlayerInfo)
+                            .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(btnInputInfo)))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,15 +160,11 @@ public class GameSetUp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPlayerName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnChooseColor)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPlayerColor)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInputInfo)
-                    .addComponent(cmbBxPlayerColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addComponent(btnInputInfo)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,36 +181,42 @@ public class GameSetUp extends javax.swing.JFrame {
 
     private void btnInputInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputInfoMouseClicked
         String name = txtFldPlayerName.getText();
-        players.add(name);
-        if (playerNumber == numberOfPlayers) {
-            //mandar a empezar el juego
-            startGame();
+        if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Name must not be empty");
         } else {
-            playerNumber++;
-            lblPlayerInfo.setText("Player " + playerNumber + " Info");
+            Player player = new Player();
+            player.setName(name);
+            player.setPlayerColor(currentColor);
+            players.add(player);
+            if (playerNumber == numberOfPlayers) {
+                startGame();
+            } else {
+                //input info for next player
+                playerNumber++;
+                lblPlayerInfo.setText("Player " + playerNumber + " Info");
+            }
         }
+
     }//GEN-LAST:event_btnInputInfoMouseClicked
 
     private void cmbBxNumPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxNumPlayersActionPerformed
         lblPlayerInfo.setText("Player 1 info");
         playerNumber = 1;
-        numberOfPlayers = Integer.parseInt((String)cmbBxNumPlayers.getSelectedItem());
+        numberOfPlayers = Integer.parseInt((String) cmbBxNumPlayers.getSelectedItem());
+        players = new ArrayList<>();
     }//GEN-LAST:event_cmbBxNumPlayersActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        Color color = JColorChooser.showDialog(null, "Choose a color", Color.yellow);
-        playerColors.add(color);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnChooseColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChooseColorMouseClicked
+        currentColor = JColorChooser.showDialog(null, "Choose a color", Color.yellow);
+    }//GEN-LAST:event_btnChooseColorMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChooseColor;
     private javax.swing.JButton btnInputInfo;
     private javax.swing.JComboBox cmbBxNumPlayers;
-    private javax.swing.JComboBox cmbBxPlayerColor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblGameSetUp;
     private javax.swing.JLabel lblNumPlayers;
-    private javax.swing.JLabel lblPlayerColor;
     private javax.swing.JLabel lblPlayerInfo;
     private javax.swing.JLabel lblPlayerName;
     private javax.swing.JTextField txtFldPlayerName;
