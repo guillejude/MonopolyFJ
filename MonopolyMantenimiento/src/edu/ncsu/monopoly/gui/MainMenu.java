@@ -6,6 +6,7 @@
 package edu.ncsu.monopoly.gui;
 
 import edu.ncsu.monopoly.GameSystem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +15,7 @@ import edu.ncsu.monopoly.GameSystem;
 public class MainMenu extends javax.swing.JFrame {
 
     GameSystem system;
-    
+
     public MainMenu(GameSystem system) {
         initComponents();
         this.system = system;
@@ -32,7 +33,7 @@ public class MainMenu extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnPlay = new javax.swing.JButton();
         btnAddUserProfile = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnViewProfiles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +53,12 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("VIEW PROFILE");
+        btnViewProfiles.setText("VIEW PROFILES");
+        btnViewProfiles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnViewProfilesMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,7 +74,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAddUserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnViewProfiles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,7 +87,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(btnAddUserProfile)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(btnViewProfiles)
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
@@ -102,11 +108,22 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnAddUserProfileMouseClicked
 
+    private void btnViewProfilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewProfilesMouseClicked
+        if (system.getProfiles().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "There are no profiles on the system");
+        } else {
+            ViewProfiles viewProfilesWindow = new ViewProfiles(this, system);
+            viewProfilesWindow.setVisible(true);
+            this.setEnabled(false);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnViewProfilesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddUserProfile;
     private javax.swing.JButton btnPlay;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnViewProfiles;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

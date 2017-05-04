@@ -29,6 +29,7 @@ public class GameSetUp extends javax.swing.JFrame {
 
     public GameSetUp(JFrame parent) {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = parent;
         this.playerNumber = 1;
         this.numberOfPlayers = 1;
@@ -194,6 +195,7 @@ public class GameSetUp extends javax.swing.JFrame {
                 //input info for next player
                 playerNumber++;
                 lblPlayerInfo.setText("Player " + playerNumber + " Info");
+                txtFldPlayerName.setText("");
             }
         }
 

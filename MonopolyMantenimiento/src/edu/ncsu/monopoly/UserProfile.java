@@ -5,6 +5,8 @@
  */
 package edu.ncsu.monopoly;
 
+import java.util.Objects;
+
 /**
  *
  * @author Guillermo
@@ -49,6 +51,11 @@ public class UserProfile {
 
     public void setGamesWon(int gamesWon) {
         this.gamesWon = gamesWon;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.name.equals(((UserProfile)obj).name);
     }
     
     

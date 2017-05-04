@@ -21,6 +21,7 @@ public class AddUser extends javax.swing.JFrame {
 
     public AddUser(JFrame parent, GameSystem system) {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = parent;
         this.system = system;
     }
@@ -98,9 +99,13 @@ public class AddUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Name must not be empty");
         } else {
             UserProfile newUserProfile = new UserProfile(name);
-            system.addProfile(newUserProfile);
-            this.dispose();
-            enableParent();
+            if (system.addProfile(newUserProfile)) {
+                JOptionPane.showMessageDialog(null, "User added successfully to the system");
+                this.dispose();
+                enableParent();
+            }else{
+                JOptionPane.showMessageDialog(null, "There already exists a user profile with that name, please choose a different name");
+            }
         }
     }//GEN-LAST:event_btnAddUserMouseClicked
 

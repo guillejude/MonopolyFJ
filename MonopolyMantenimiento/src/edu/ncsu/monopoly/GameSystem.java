@@ -22,7 +22,12 @@ public class GameSystem {
         this.profiles = profiles;
     }
     
-    public void addProfile(UserProfile profile){
-        profiles.add(profile);
+    public boolean addProfile(UserProfile profile){
+        boolean returnValue = false;
+        if(!profiles.contains(profile)){
+            profiles.add(profile);
+            returnValue = true;
+        }
+        return returnValue;
     }
 }
