@@ -5,6 +5,7 @@
  */
 package edu.ncsu.monopoly;
 
+import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,7 @@ public class UserProfile {
     private String name;
     private int gamesPlayed;
     private int gamesWon;
-    //images
+    private BufferedImage image;
 
     public UserProfile() {
         this.name = "";
@@ -23,8 +24,9 @@ public class UserProfile {
         this.gamesWon = 0;
     }
     
-    public UserProfile(String name) {
+    public UserProfile(String name, BufferedImage image) {
         this.name = name;
+        this.image = image;
         this.gamesPlayed = 0;
         this.gamesWon = 0;
     }
@@ -51,6 +53,14 @@ public class UserProfile {
 
     public void setGamesWon(int gamesWon) {
         this.gamesWon = gamesWon;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
     }
 
     @Override
