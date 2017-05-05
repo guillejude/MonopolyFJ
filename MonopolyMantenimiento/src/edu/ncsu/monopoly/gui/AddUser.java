@@ -135,7 +135,7 @@ public class AddUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Name must not be empty");
         } else {
             if (currentImage != null) {
-                //Name and image are selected, add user
+                //Name and image are selected correctly, add user
                 UserProfile newUserProfile = new UserProfile(name, currentImage);
                 if (system.addProfile(newUserProfile)) {
                     JOptionPane.showMessageDialog(null, "User added successfully to the system");
