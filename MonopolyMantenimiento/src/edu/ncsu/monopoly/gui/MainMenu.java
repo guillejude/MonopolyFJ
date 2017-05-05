@@ -105,7 +105,7 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayMouseClicked
-        GameSetUp gameSetUpWindow = new GameSetUp(this);
+        GameSetUp gameSetUpWindow = new GameSetUp(this,system);
         gameSetUpWindow.setVisible(true);
         this.setEnabled(false);
         this.setVisible(false);

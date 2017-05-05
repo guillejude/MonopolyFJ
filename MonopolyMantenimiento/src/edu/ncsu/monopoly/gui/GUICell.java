@@ -40,13 +40,14 @@ public class GUICell extends JPanel {
         Player player = GameMaster.instance().getPlayer(index);
         lblPlayers[index].setText(player.getName().substring(0, 1));
         lblPlayers[index].setOpaque(true);
-        //Se setea la foto para mostrar en la ficha del jugador
-        ImageIcon foto = new ImageIcon(getClass().getResource("prueba.png"));
-        //Se modifica el tamano de la imagen para que quepa dentro de la ficha del jugador
-        Image image = foto.getImage();
-        Image newimg = image.getScaledInstance(45, 50, java.awt.Image.SCALE_SMOOTH); 
-        foto = new ImageIcon(newimg);
-        //lblPlayers[index].setIcon(foto);
+        if (player.isPlaysWithImage()) {
+            //Se setea la foto para mostrar en la ficha del jugador
+            //Se modifica el tamano de la imagen para que quepa dentro de la ficha del jugador
+            Image image = player.getPlayerImage().getImage();
+            Image newimg = image.getScaledInstance(45, 50, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(newimg);
+            lblPlayers[index].setIcon(icon);
+        }
     }
 
     private void createPlayerLabels(JPanel pnlPlayer) {

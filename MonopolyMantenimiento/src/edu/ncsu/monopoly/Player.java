@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import javax.swing.ImageIcon;
 
 
 public class Player {
         private Color playerColor;
+        private ImageIcon playerImage;
+        private boolean playsWithImage;
     
 	//the key of colorGroups is the name of the color group.
 	private Hashtable colorGroups = new Hashtable();
@@ -280,6 +283,22 @@ public class Player {
 
     public void setPlayerColor(Color playerColor) {
         this.playerColor = playerColor;
+    }
+
+    public ImageIcon getPlayerImage() {
+        return playerImage;
+    }
+
+    public void setPlayerImage(ImageIcon playerImage) {
+        this.playerImage = playerImage;
+    }
+
+    public boolean isPlaysWithImage() {
+        return playsWithImage;
+    }
+
+    public void setPlaysWithImage(boolean playsWithImage) {
+        this.playsWithImage = playsWithImage;
     }
     
     

@@ -31,7 +31,7 @@ public class ViewProfiles extends javax.swing.JFrame {
         updateProfileInfo(0);
     }
     
-    public  void setUpComboBox(){
+    private  void setUpComboBox(){
         String [] profilesInfo = new String [system.getProfiles().size()];
         for(int i = 0; i< profilesInfo.length; i++){
             profilesInfo[i] = system.getProfiles().get(i).getName();
@@ -39,7 +39,7 @@ public class ViewProfiles extends javax.swing.JFrame {
         cmbBxProfiles.setModel(new DefaultComboBoxModel(profilesInfo));
     }
     
-    public void updateProfileInfo(int profileNumber){
+    private void updateProfileInfo(int profileNumber){
         UserProfile profile = system.getProfiles().get(profileNumber);
         lblUserNameDisplay.setText(profile.getName());
         lblGamesPlayedDisplay.setText(profile.getGamesPlayed() + "");

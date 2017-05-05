@@ -25,6 +25,7 @@ import edu.ncsu.monopoly.Player;
 
 public class MainWindow extends JFrame implements MonopolyGUI {
 
+    private JFrame parent;
     JPanel eastPanel = new JPanel();
     ArrayList guiCells = new ArrayList();
 
@@ -33,7 +34,8 @@ public class MainWindow extends JFrame implements MonopolyGUI {
     JPanel southPanel = new JPanel();
     JPanel westPanel = new JPanel();
 
-    public MainWindow() {
+    public MainWindow(JFrame parent) {
+        this.parent = parent;
         northPanel.setBorder(new LineBorder(Color.BLACK));
         southPanel.setBorder(new LineBorder(Color.BLACK));
         westPanel.setBorder(new LineBorder(Color.BLACK));
@@ -48,10 +50,10 @@ public class MainWindow extends JFrame implements MonopolyGUI {
         c.add(southPanel, BorderLayout.SOUTH);
         c.add(eastPanel, BorderLayout.EAST);
         c.add(westPanel, BorderLayout.WEST);
-
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                parent.setVisible(true);
+                parent.setEnabled(true);
             }
         });
     }
