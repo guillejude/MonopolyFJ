@@ -28,7 +28,7 @@ public class AddUser extends javax.swing.JFrame {
 
     private JFrame parent;
     private GameSystem system;
-    private BufferedImage currentImage;
+    private ImageIcon currentImage;
 
     public AddUser(JFrame parent, GameSystem system) {
         initComponents();
@@ -156,17 +156,19 @@ public class AddUser extends javax.swing.JFrame {
 
     private void btnChooseImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChooseImageMouseClicked
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
+        //setup new filechooser so that only images can be selected
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.showOpenDialog(this);
         File imageFile = fileChooser.getSelectedFile();
         try {
-            currentImage = ImageIO.read(imageFile);
-            ImageIcon foto = new ImageIcon(currentImage.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-            lblImageChosen.setIcon(foto);
-        } catch (Exception ex) {
-            
+            //try to read image, store it and save it
+            BufferedImage image = ImageIO.read(imageFile);
+            currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
+            lblImageChosen.setIcon(currentImage);
+        } catch (IOException ex) {
+            Logger.getLogger(AddUser.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnChooseImageMouseClicked

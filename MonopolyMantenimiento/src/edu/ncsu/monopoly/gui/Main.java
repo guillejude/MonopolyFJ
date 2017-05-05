@@ -5,76 +5,28 @@ import javax.swing.JOptionPane;
 import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.test.boardScenarios.GameBoardFull;
 import java.awt.Color;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
-    private static int inputNumberOfPlayers(MainWindow window) {
-        int numPlayers = 0;
-        while (numPlayers <= 0 || numPlayers > GameMaster.MAX_PLAYER) {
-            String numberOfPlayers = JOptionPane.showInputDialog(window, "How many players");
-            if (numberOfPlayers == null) {
-                System.exit(0);
-            }
-            try {
-                numPlayers = Integer.parseInt(numberOfPlayers);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(window, "Please input a number");
-            }
-            if (numPlayers <= 0 || numPlayers > GameMaster.MAX_PLAYER) {
-                JOptionPane.showMessageDialog(window, "Please input a number between one and eight");
-            } else {
-                GameMaster.instance().setNumberOfPlayers(numPlayers);
-            }
-        }
-        return numPlayers;
-    }
-
     public static void main(String[] args) {
-        /*GameMaster master = GameMaster.instance();
-        MainWindow window = new MainWindow();
-        GameBoard gameBoard = null;
-        if (args.length > 0) {
-            if (args[0].equals("test")) {
-                master.setTestMode(true);
-            }
-            try {
-                Class c = Class.forName(args[1]);
-                gameBoard = (GameBoard) c.newInstance();
-            } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(window, "Class Not Found.  Program will exit");
-                System.exit(0);
-            } catch (IllegalAccessException e) {
-                JOptionPane.showMessageDialog(window, "Illegal Access of Class.  Program will exit");
-                System.exit(0);
-            } catch (InstantiationException e) {
-                JOptionPane.showMessageDialog(window, "Class Cannot be Instantiated.  Program will exit");
-                System.exit(0);
-            }
-        } else {
-            gameBoard = new GameBoardFull();
-        }
-
-        master.setGameBoard(gameBoard);
-        int numPlayers = inputNumberOfPlayers(window);
-        for (int i = 0; i < numPlayers; i++) {
-            String name
-                    = JOptionPane.showInputDialog(window, "Please input name for Player " + (i + 1));
-            GameMaster.instance().getPlayer(i).setName(name);
-            String color
-                    = JOptionPane.showInputDialog(window, "Please input color for Player " + (i + 1));
-            if (color.equals("yellow")) {
-                GameMaster.instance().getPlayer(i).setPlayerColor(Color.yellow);
-            }
-            if (color.equals("red")) {
-                GameMaster.instance().getPlayer(i).setPlayerColor(Color.red);
-            }
-
-        }
-        window.setupGameBoard(gameBoard);
-        window.show();
-        master.setGUI(window);
-        master.startGame();*/
         GameSystem system = new GameSystem();
+        try {
+            //try reading the saved data for the system
+            FileInputStream fileIn = new FileInputStream("savedFiles.txt");
+            BufferedInputStream bufferIn = new BufferedInputStream(fileIn);
+            ObjectInputStream in = new ObjectInputStream(bufferIn);
+            system = ((GameSystem) in.readObject());
+        } catch (IOException e1) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);
+        } catch (ClassNotFoundException e2) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);
+        }
         MainMenu mainMenuWindow = new MainMenu(system);
         mainMenuWindow.setVisible(true);
     }

@@ -6,17 +6,19 @@
 package edu.ncsu.monopoly;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.Objects;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Guillermo
  */
-public class UserProfile {
+public class UserProfile implements Serializable{
     private String name;
     private int gamesPlayed;
     private int gamesWon;
-    private BufferedImage image;
+    private ImageIcon image;
 
     public UserProfile() {
         this.name = "";
@@ -24,7 +26,7 @@ public class UserProfile {
         this.gamesWon = 0;
     }
     
-    public UserProfile(String name, BufferedImage image) {
+    public UserProfile(String name, ImageIcon image) {
         this.name = name;
         this.image = image;
         this.gamesPlayed = 0;
@@ -55,11 +57,11 @@ public class UserProfile {
         this.gamesWon = gamesWon;
     }
 
-    public BufferedImage getImage() {
+    public ImageIcon getImage() {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
+    public void setImage(ImageIcon image) {
         this.image = image;
     }
 

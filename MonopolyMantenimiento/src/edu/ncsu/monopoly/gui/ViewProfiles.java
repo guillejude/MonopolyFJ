@@ -7,6 +7,7 @@ package edu.ncsu.monopoly.gui;
 
 import edu.ncsu.monopoly.GameSystem;
 import edu.ncsu.monopoly.UserProfile;
+import java.awt.Image;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -43,8 +44,9 @@ public class ViewProfiles extends javax.swing.JFrame {
         lblUserNameDisplay.setText(profile.getName());
         lblGamesPlayedDisplay.setText(profile.getGamesPlayed() + "");
         lblGamesWonDisplay.setText(profile.getGamesWon() + "");
-        ImageIcon image = new ImageIcon(profile.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-        lblImageDisplay.setIcon(image);
+        Image imageToScale = profile.getImage().getImage();
+        ImageIcon imageToShow = new ImageIcon(imageToScale.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
+        lblImageDisplay.setIcon(imageToShow);
     }
 
     /**
@@ -130,11 +132,10 @@ public class ViewProfiles extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbBxProfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSelectProfile))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUserName)
                             .addComponent(lblUserNameDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

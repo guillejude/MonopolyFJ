@@ -5,9 +5,10 @@
  */
 package edu.ncsu.monopoly;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameSystem {
+public class GameSystem implements Serializable{
     private ArrayList<UserProfile> profiles;
 
     public GameSystem() {

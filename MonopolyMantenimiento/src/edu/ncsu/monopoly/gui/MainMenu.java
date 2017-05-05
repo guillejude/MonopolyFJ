@@ -6,6 +6,11 @@
 package edu.ncsu.monopoly.gui;
 
 import edu.ncsu.monopoly.GameSystem;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +41,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnViewProfiles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lblTitle.setText("MONOPOLY");
 
@@ -118,6 +128,23 @@ public class MainMenu extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnViewProfilesMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //save data before closing the window
+        FileOutputStream fileOut;
+        try {
+            fileOut = new FileOutputStream("savedFiles.txt");
+            BufferedOutputStream bufferOut = new BufferedOutputStream(fileOut);
+            ObjectOutputStream out = new ObjectOutputStream(bufferOut);
+            out.writeObject(system);
+            out.flush();
+            out.close();
+        } catch (FileNotFoundException ex) {
+
+        } catch (IOException e) {
+
+        }
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
