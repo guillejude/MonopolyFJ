@@ -24,6 +24,7 @@ public class UserProfile implements Serializable{
         this.name = "";
         this.gamesPlayed = 0;
         this.gamesWon = 0;
+        image = null;
     }
     
     public UserProfile(String name, ImageIcon image) {

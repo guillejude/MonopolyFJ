@@ -25,7 +25,7 @@ public class TaxiCardTest extends TestCase{
         assertEquals(4, card.getMovement());
     }
     
-    public void testgetLabel(){
+    public void testGetLabel(){
         TaxiCard card = new TaxiCard(1);
         card.setMovement(4);
         assertEquals("The Taxi moved you 4 places", card.getLabel());

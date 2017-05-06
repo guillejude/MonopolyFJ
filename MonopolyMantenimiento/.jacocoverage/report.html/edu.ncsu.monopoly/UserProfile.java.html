@@ -20,54 +20,55 @@ public class UserProfile implements Serializable{
     private int gamesWon;
     private ImageIcon image;
 
-<span class="nc" id="L23">    public UserProfile() {</span>
-<span class="nc" id="L24">        this.name = &quot;&quot;;</span>
-<span class="nc" id="L25">        this.gamesPlayed = 0;</span>
-<span class="nc" id="L26">        this.gamesWon = 0;</span>
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L23">    public UserProfile() {</span>
+<span class="fc" id="L24">        this.name = &quot;&quot;;</span>
+<span class="fc" id="L25">        this.gamesPlayed = 0;</span>
+<span class="fc" id="L26">        this.gamesWon = 0;</span>
+<span class="fc" id="L27">        image = null;</span>
+<span class="fc" id="L28">    }</span>
     
-<span class="nc" id="L29">    public UserProfile(String name, ImageIcon image) {</span>
-<span class="nc" id="L30">        this.name = name;</span>
-<span class="nc" id="L31">        this.image = image;</span>
-<span class="nc" id="L32">        this.gamesPlayed = 0;</span>
-<span class="nc" id="L33">        this.gamesWon = 0;</span>
-<span class="nc" id="L34">    }</span>
+<span class="fc" id="L30">    public UserProfile(String name, ImageIcon image) {</span>
+<span class="fc" id="L31">        this.name = name;</span>
+<span class="fc" id="L32">        this.image = image;</span>
+<span class="fc" id="L33">        this.gamesPlayed = 0;</span>
+<span class="fc" id="L34">        this.gamesWon = 0;</span>
+<span class="fc" id="L35">    }</span>
 
     public String getName() {
-<span class="nc" id="L37">        return name;</span>
+<span class="fc" id="L38">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="nc" id="L41">        this.name = name;</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L42">        this.name = name;</span>
+<span class="fc" id="L43">    }</span>
 
     public int getGamesPlayed() {
-<span class="nc" id="L45">        return gamesPlayed;</span>
+<span class="fc" id="L46">        return gamesPlayed;</span>
     }
 
     public void setGamesPlayed(int gamesPlayed) {
-<span class="nc" id="L49">        this.gamesPlayed = gamesPlayed;</span>
-<span class="nc" id="L50">    }</span>
+<span class="fc" id="L50">        this.gamesPlayed = gamesPlayed;</span>
+<span class="fc" id="L51">    }</span>
 
     public int getGamesWon() {
-<span class="nc" id="L53">        return gamesWon;</span>
+<span class="fc" id="L54">        return gamesWon;</span>
     }
 
     public void setGamesWon(int gamesWon) {
-<span class="nc" id="L57">        this.gamesWon = gamesWon;</span>
-<span class="nc" id="L58">    }</span>
+<span class="fc" id="L58">        this.gamesWon = gamesWon;</span>
+<span class="fc" id="L59">    }</span>
 
     public ImageIcon getImage() {
-<span class="nc" id="L61">        return image;</span>
+<span class="fc" id="L62">        return image;</span>
     }
 
     public void setImage(ImageIcon image) {
-<span class="nc" id="L65">        this.image = image;</span>
-<span class="nc" id="L66">    }</span>
+<span class="fc" id="L66">        this.image = image;</span>
+<span class="fc" id="L67">    }</span>
 
     @Override
     public boolean equals(Object obj) {
-<span class="nc" id="L70">        return this.name.equals(((UserProfile)obj).name);</span>
+<span class="fc" id="L71">        return this.name.equals(((UserProfile)obj).name);</span>
     }
     
     
