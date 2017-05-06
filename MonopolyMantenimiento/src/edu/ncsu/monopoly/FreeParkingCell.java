@@ -7,10 +7,7 @@ public class FreeParkingCell extends Cell {
 	}
 
 	public void playAction() {
-		Player currentPlayer = GameMaster.instance().getCurrentPlayer();
-		int rentToCharge = 32;
-		currentPlayer.payRentToBank(rentToCharge);
-		;
-		return;
+		
+            
 	}
 }
