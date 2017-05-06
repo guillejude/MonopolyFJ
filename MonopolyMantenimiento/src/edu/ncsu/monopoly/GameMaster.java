@@ -304,7 +304,7 @@ public class GameMaster {
             gui.setBuyHouseEnabled(getCurrentPlayer().canBuyHouse());
             gui.setTradeEnabled(turn, true);
         } else {
-            gui.setGetOutOfJailEnabled(false);
+            gui.setGetOutOfJailEnabled(true);
         }
     }
 
