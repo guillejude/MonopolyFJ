@@ -239,13 +239,14 @@ public class Player {
 	            railroads.remove(property);
 	        }
 	        if(property instanceof UtilityCell) {
-	            railroads.remove(property);
+	            utilities.remove(property);
 	        }
+                setMoney(getMoney() + amount);
         }
         catch(Exception e){
         	property.setOwner(this);
         }
-        setMoney(getMoney() + amount);
+        
     }
 
 	public void setInJail(boolean inJail) {
