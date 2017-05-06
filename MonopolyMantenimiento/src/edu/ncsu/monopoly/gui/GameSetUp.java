@@ -9,6 +9,7 @@ import edu.ncsu.monopoly.GameBoard;
 import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.GameSystem;
 import edu.ncsu.monopoly.Player;
+import edu.ncsu.monopoly.UserProfile;
 import edu.ncsu.monopoly.test.boardScenarios.GameBoardFull;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -190,6 +191,11 @@ public class GameSetUp extends javax.swing.JFrame {
         lblOrName.setText("or");
 
         cmbBxUserProfiles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbBxUserProfiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBxUserProfilesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -300,27 +306,46 @@ public class GameSetUp extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbBxNumPlayersMouseClicked
 
     private void btnInputInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputInfoMouseClicked
-        String name = txtFldPlayerName.getText();
-        if (name.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Name must not be empty");
+        String name;
+        boolean inputsAreValid = false;
+        Player player = new Player();
+        if (rdBtnRegisteredPlayer.isSelected()) {
+            int userNumber = cmbBxUserProfiles.getSelectedIndex();
+            UserProfile userSelected = system.getProfiles().get(userNumber);
+            name = userSelected.getName();
+            inputsAreValid = true;
         } else {
-            Player player = new Player();
-            player.setName(name);
-            player.setPlayerColor(currentColor);
-            player.setPlayerImage(currentImage);
-            if(currentImage==null){
-                player.setPlaysWithImage(false);
-            }else{
-                player.setPlaysWithImage(true);
-            }
-            players.add(player);
-            if (playerNumber == numberOfPlayers) {
-                startGame();
-                this.dispose();
+            name = txtFldPlayerName.getText();
+            if (name.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Name must not be empty");
             } else {
-                prepareInputForNextPlayer();
+                inputsAreValid = true;
             }
         }
+        if (inputsAreValid) {
+            player.setName(name);
+            if (players.contains(player)) {
+                JOptionPane.showMessageDialog(null, "Name and/or User profile already chosen for this game, please chose another");
+            } else {
+                player.setPlayerColor(currentColor);
+                player.setPlayerImage(currentImage);
+                if (currentImage == null) {
+                    player.setPlaysWithImage(false);
+                } else {
+                    player.setPlaysWithImage(true);
+                }
+
+                players.add(player);
+                if (playerNumber == numberOfPlayers) {
+                    startGame();
+                    this.dispose();
+                } else {
+                    prepareInputForNextPlayer();
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_btnInputInfoMouseClicked
 
     public void prepareInputForNextPlayer() {
@@ -378,9 +403,25 @@ public class GameSetUp extends javax.swing.JFrame {
     }//GEN-LAST:event_rdBtnNewPlayerActionPerformed
 
     private void rdBtnRegisteredPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnRegisteredPlayerActionPerformed
-        txtFldPlayerName.setEnabled(false);
-        cmbBxUserProfiles.setEnabled(true);
+        if (system.getProfiles().size() == 0) {
+            JOptionPane.showMessageDialog(null, "There are no registered user profiles on the system, select to play as a New Player");
+            txtFldPlayerName.setEnabled(true);
+            cmbBxUserProfiles.setEnabled(false);
+        } else {
+            txtFldPlayerName.setEnabled(false);
+            cmbBxUserProfiles.setEnabled(true);
+        }
     }//GEN-LAST:event_rdBtnRegisteredPlayerActionPerformed
+
+    private void cmbBxUserProfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxUserProfilesActionPerformed
+        int userNumber = cmbBxUserProfiles.getSelectedIndex();
+        UserProfile user = system.getProfiles().get(userNumber);
+        rdBtnChooseImage.setSelected(true);
+        rdBtnChooseColor.setSelected(false);
+        currentImage = user.getImage();
+        currentColor = null;
+        lblIdentifierChosen.setIcon(currentImage);
+    }//GEN-LAST:event_cmbBxUserProfilesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

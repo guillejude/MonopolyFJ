@@ -18,17 +18,17 @@
 	}
 
 	public int getRent() {
-<span class="fc" id="L21">		return RailRoadCell.baseRent * (int)Math.pow(2, owner.numberOfRR() - 1);</span>
+<span class="nc" id="L21">		return RailRoadCell.baseRent * (int)Math.pow(2, owner.numberOfRR() - 1);</span>
 	}
 	
 	public void playAction() {
-<span class="fc" id="L25">		Player currentPlayer = null;</span>
-<span class="pc bpc" id="L26" title="1 of 2 branches missed.">		if(!isAvailable()) {</span>
-<span class="fc" id="L27">			currentPlayer = GameMaster.instance().getCurrentPlayer();</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">			if(owner != currentPlayer) {</span>
-<span class="fc" id="L29">				currentPlayer.payRentTo(owner, getRent());</span>
+<span class="nc" id="L25">		Player currentPlayer = null;</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">		if(!isAvailable()) {</span>
+<span class="nc" id="L27">			currentPlayer = GameMaster.instance().getCurrentPlayer();</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">			if(owner != currentPlayer) {</span>
+<span class="nc" id="L29">				currentPlayer.payRentTo(owner, getRent());</span>
 			}
 		}
-<span class="fc" id="L32">	}</span>
+<span class="nc" id="L32">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

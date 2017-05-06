@@ -40,44 +40,45 @@ public class GUICell extends JPanel {
 <span class="nc" id="L40">        Player player = GameMaster.instance().getPlayer(index);</span>
 <span class="nc" id="L41">        lblPlayers[index].setText(player.getName().substring(0, 1));</span>
 <span class="nc" id="L42">        lblPlayers[index].setOpaque(true);</span>
-        //Se setea la foto para mostrar en la ficha del jugador
-<span class="nc" id="L44">        ImageIcon foto = new ImageIcon(getClass().getResource(&quot;prueba.png&quot;));</span>
-        //Se modifica el tamano de la imagen para que quepa dentro de la ficha del jugador
-<span class="nc" id="L46">        Image image = foto.getImage();</span>
-<span class="nc" id="L47">        Image newimg = image.getScaledInstance(45, 50, java.awt.Image.SCALE_SMOOTH); </span>
-<span class="nc" id="L48">        foto = new ImageIcon(newimg);</span>
-<span class="nc" id="L49">        lblPlayers[index].setIcon(foto);</span>
-<span class="nc" id="L50">    }</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        if (player.isPlaysWithImage()) {</span>
+            //Se setea la foto para mostrar en la ficha del jugador
+            //Se modifica el tamano de la imagen para que quepa dentro de la ficha del jugador
+<span class="nc" id="L46">            Image image = player.getPlayerImage().getImage();</span>
+<span class="nc" id="L47">            Image newimg = image.getScaledInstance(45, 50, java.awt.Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L48">            ImageIcon icon = new ImageIcon(newimg);</span>
+<span class="nc" id="L49">            lblPlayers[index].setIcon(icon);</span>
+        }
+<span class="nc" id="L51">    }</span>
 
     private void createPlayerLabels(JPanel pnlPlayer) {
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; GameMaster.MAX_PLAYER; i++) {</span>
-<span class="nc" id="L54">            lblPlayers[i] = new JLabel();</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">            if (i &lt; GameMaster.instance().getNumberOfPlayers()) {</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        for (int i = 0; i &lt; GameMaster.MAX_PLAYER; i++) {</span>
+<span class="nc" id="L55">            lblPlayers[i] = new JLabel();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            if (i &lt; GameMaster.instance().getNumberOfPlayers()) {</span>
                 //se setea el color asignado a cada jugador
-<span class="nc" id="L57">                lblPlayers[i].setBackground(GameMaster.instance().getPlayer(i).getPlayerColor());</span>
+<span class="nc" id="L58">                lblPlayers[i].setBackground(GameMaster.instance().getPlayer(i).getPlayerColor());</span>
             } else {
-<span class="nc" id="L59">                lblPlayers[i].setBackground(Color.GREEN);</span>
+<span class="nc" id="L60">                lblPlayers[i].setBackground(Color.GREEN);</span>
             }
-<span class="nc" id="L61">            pnlPlayer.add(lblPlayers[i]);</span>
+<span class="nc" id="L62">            pnlPlayer.add(lblPlayers[i]);</span>
         }
-<span class="nc" id="L63">    }</span>
+<span class="nc" id="L64">    }</span>
 
     public void displayInfo() {
-<span class="nc" id="L66">        lblInfo.setText(InfoFormatter.cellInfo(cell));</span>
-<span class="nc" id="L67">        this.invalidate();</span>
-<span class="nc" id="L68">        this.repaint();</span>
-<span class="nc" id="L69">    }</span>
+<span class="nc" id="L67">        lblInfo.setText(InfoFormatter.cellInfo(cell));</span>
+<span class="nc" id="L68">        this.invalidate();</span>
+<span class="nc" id="L69">        this.repaint();</span>
+<span class="nc" id="L70">    }</span>
 
     public Cell getCell() {
-<span class="nc" id="L72">        return cell;</span>
+<span class="nc" id="L73">        return cell;</span>
     }
 
     public void removePlayer(int index) {
-<span class="nc" id="L76">        lblPlayers[index].setText(&quot;&quot;);</span>
-<span class="nc" id="L77">        lblPlayers[index].setOpaque(false);</span>
-<span class="nc" id="L78">        this.repaint();</span>
+<span class="nc" id="L77">        lblPlayers[index].setText(&quot;&quot;);</span>
+<span class="nc" id="L78">        lblPlayers[index].setOpaque(false);</span>
+<span class="nc" id="L79">        this.repaint();</span>
         //se saca la foto
-<span class="nc" id="L80">        lblPlayers[index].setIcon(null);</span>
-<span class="nc" id="L81">    }</span>
+<span class="nc" id="L81">        lblPlayers[index].setIcon(null);</span>
+<span class="nc" id="L82">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

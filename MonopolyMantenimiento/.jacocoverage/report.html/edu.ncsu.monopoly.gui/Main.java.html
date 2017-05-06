@@ -5,77 +5,30 @@ import javax.swing.JOptionPane;
 import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.test.boardScenarios.GameBoardFull;
 import java.awt.Color;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-<span class="nc" id="L9">public class Main {</span>
-
-    private static int inputNumberOfPlayers(MainWindow window) {
-<span class="nc" id="L12">        int numPlayers = 0;</span>
-<span class="nc bnc" id="L13" title="All 4 branches missed.">        while (numPlayers &lt;= 0 || numPlayers &gt; GameMaster.MAX_PLAYER) {</span>
-<span class="nc" id="L14">            String numberOfPlayers = JOptionPane.showInputDialog(window, &quot;How many players&quot;);</span>
-<span class="nc bnc" id="L15" title="All 2 branches missed.">            if (numberOfPlayers == null) {</span>
-<span class="nc" id="L16">                System.exit(0);</span>
-            }
-            try {
-<span class="nc" id="L19">                numPlayers = Integer.parseInt(numberOfPlayers);</span>
-<span class="nc" id="L20">            } catch (NumberFormatException e) {</span>
-<span class="nc" id="L21">                JOptionPane.showMessageDialog(window, &quot;Please input a number&quot;);</span>
-<span class="nc" id="L22">            }</span>
-<span class="nc bnc" id="L23" title="All 4 branches missed.">            if (numPlayers &lt;= 0 || numPlayers &gt; GameMaster.MAX_PLAYER) {</span>
-<span class="nc" id="L24">                JOptionPane.showMessageDialog(window, &quot;Please input a number between one and eight&quot;);</span>
-            } else {
-<span class="nc" id="L26">                GameMaster.instance().setNumberOfPlayers(numPlayers);</span>
-            }
-<span class="nc" id="L28">        }</span>
-<span class="nc" id="L29">        return numPlayers;</span>
-    }
+<span class="nc" id="L15">public class Main {</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L33">        GameMaster master = GameMaster.instance();</span>
-<span class="nc" id="L34">        MainWindow window = new MainWindow();</span>
-<span class="nc" id="L35">        GameBoard gameBoard = null;</span>
-        /*if (args.length &gt; 0) {
-            if (args[0].equals(&quot;test&quot;)) {
-                master.setTestMode(true);
-            }
-            try {
-                Class c = Class.forName(args[1]);
-                gameBoard = (GameBoard) c.newInstance();
-            } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(window, &quot;Class Not Found.  Program will exit&quot;);
-                System.exit(0);
-            } catch (IllegalAccessException e) {
-                JOptionPane.showMessageDialog(window, &quot;Illegal Access of Class.  Program will exit&quot;);
-                System.exit(0);
-            } catch (InstantiationException e) {
-                JOptionPane.showMessageDialog(window, &quot;Class Cannot be Instantiated.  Program will exit&quot;);
-                System.exit(0);
-            }
-        } else {*/
-<span class="nc" id="L54">            gameBoard = new GameBoardFull();/*</span>
-        }*/
-
-<span class="nc" id="L57">        master.setGameBoard(gameBoard);</span>
-<span class="nc" id="L58">        int numPlayers = inputNumberOfPlayers(window);</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (int i = 0; i &lt; numPlayers; i++) {</span>
-<span class="nc" id="L60">            String name</span>
-<span class="nc" id="L61">                    = JOptionPane.showInputDialog(window, &quot;Please input name for Player &quot; + (i + 1));</span>
-<span class="nc" id="L62">            GameMaster.instance().getPlayer(i).setName(name);</span>
-<span class="nc" id="L63">            String color</span>
-<span class="nc" id="L64">                    = JOptionPane.showInputDialog(window, &quot;Please input color for Player &quot; + (i + 1));</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (color.equals(&quot;yellow&quot;)) {</span>
-<span class="nc" id="L66">                GameMaster.instance().getPlayer(i).setPlayerColor(Color.yellow);</span>
-            }
-<span class="nc bnc" id="L68" title="All 2 branches missed.">            if (color.equals(&quot;red&quot;)) {</span>
-<span class="nc" id="L69">                GameMaster.instance().getPlayer(i).setPlayerColor(Color.red);</span>
-            }
-
-        }
-<span class="nc" id="L73">        window.setupGameBoard(gameBoard);</span>
-<span class="nc" id="L74">        window.show();</span>
-<span class="nc" id="L75">        master.setGUI(window);</span>
-<span class="nc" id="L76">        master.startGame();</span>
-        /*MainMenu mainMenuWindow = new MainMenu(this, args);
-        mainMenuWindow.setVisible(true);*/
-<span class="nc" id="L79">    }</span>
+<span class="nc" id="L18">        GameSystem system = new GameSystem();</span>
+        try {
+            //try reading the saved data for the system
+<span class="nc" id="L21">            FileInputStream fileIn = new FileInputStream(&quot;savedFiles.txt&quot;);</span>
+<span class="nc" id="L22">            BufferedInputStream bufferIn = new BufferedInputStream(fileIn);</span>
+<span class="nc" id="L23">            ObjectInputStream in = new ObjectInputStream(bufferIn);</span>
+<span class="nc" id="L24">            system = ((GameSystem) in.readObject());</span>
+<span class="nc" id="L25">        } catch (IOException e1) {</span>
+<span class="nc" id="L26">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);</span>
+<span class="nc" id="L27">        } catch (ClassNotFoundException e2) {</span>
+<span class="nc" id="L28">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);</span>
+<span class="nc" id="L29">        }</span>
+<span class="nc" id="L30">        MainMenu mainMenuWindow = new MainMenu(system);</span>
+<span class="nc" id="L31">        mainMenuWindow.setVisible(true);</span>
+<span class="nc" id="L32">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

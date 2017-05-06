@@ -33,32 +33,32 @@ public class GameMaster {
 <span class="nc" id="L33">    }</span>
 
     public Card btnDrawCardClicked() {
-<span class="fc" id="L36">        gui.setDrawCardEnabled(false);</span>
-<span class="fc" id="L37">        CardCell cell = (CardCell) getCurrentPlayer().getPosition();</span>
-<span class="fc" id="L38">        Card card = null;</span>
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (cell.getType() == Card.TYPE_CC) {</span>
-<span class="fc" id="L40">            card = getGameBoard().drawCCCard();</span>
-<span class="fc" id="L41">            card.applyAction();</span>
+<span class="nc" id="L36">        gui.setDrawCardEnabled(false);</span>
+<span class="nc" id="L37">        CardCell cell = (CardCell) getCurrentPlayer().getPosition();</span>
+<span class="nc" id="L38">        Card card = null;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (cell.getType() == Card.TYPE_CC) {</span>
+<span class="nc" id="L40">            card = getGameBoard().drawCCCard();</span>
+<span class="nc" id="L41">            card.applyAction();</span>
         } else {
 <span class="nc" id="L43">            card = getGameBoard().drawChanceCard();</span>
 <span class="nc" id="L44">            card.applyAction();</span>
         }
-<span class="fc" id="L46">        gui.setEndTurnEnabled(true);</span>
-<span class="fc" id="L47">        return card;</span>
+<span class="nc" id="L46">        gui.setEndTurnEnabled(true);</span>
+<span class="nc" id="L47">        return card;</span>
     }
 
     public void btnEndTurnClicked() {
 <span class="fc" id="L51">        setAllButtonEnabled(false);</span>
 <span class="fc" id="L52">        getCurrentPlayer().getPosition().playAction();</span>
-<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (getCurrentPlayer().isBankrupt()) {</span>
-<span class="fc" id="L54">            gui.setBuyHouseEnabled(false);</span>
-<span class="fc" id="L55">            gui.setDrawCardEnabled(false);</span>
-<span class="fc" id="L56">            gui.setEndTurnEnabled(false);</span>
-<span class="fc" id="L57">            gui.setGetOutOfJailEnabled(false);</span>
-<span class="fc" id="L58">            gui.setPurchasePropertyEnabled(false);</span>
-<span class="fc" id="L59">            gui.setRollDiceEnabled(false);</span>
-<span class="fc" id="L60">            gui.setTradeEnabled(getCurrentPlayerIndex(), false);</span>
-<span class="fc" id="L61">            updateGUI();</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (getCurrentPlayer().isBankrupt()) {</span>
+<span class="nc" id="L54">            gui.setBuyHouseEnabled(false);</span>
+<span class="nc" id="L55">            gui.setDrawCardEnabled(false);</span>
+<span class="nc" id="L56">            gui.setEndTurnEnabled(false);</span>
+<span class="nc" id="L57">            gui.setGetOutOfJailEnabled(false);</span>
+<span class="nc" id="L58">            gui.setPurchasePropertyEnabled(false);</span>
+<span class="nc" id="L59">            gui.setRollDiceEnabled(false);</span>
+<span class="nc" id="L60">            gui.setTradeEnabled(getCurrentPlayerIndex(), false);</span>
+<span class="nc" id="L61">            updateGUI();</span>
         } else {
 <span class="fc" id="L63">            switchTurn();</span>
 <span class="fc" id="L64">            updateGUI();</span>
@@ -185,7 +185,7 @@ public class GameMaster {
     }
 
     public int getUtilDiceRoll() {
-<span class="fc" id="L188">        return this.utilDiceRoll;</span>
+<span class="nc" id="L188">        return this.utilDiceRoll;</span>
     }
 
     public void movePlayer(int playerIndex, int diceValue) {
@@ -197,8 +197,8 @@ public class GameMaster {
 <span class="fc" id="L197">        Cell currentPosition = player.getPosition();</span>
 <span class="fc" id="L198">        int positionIndex = gameBoard.queryCellIndex(currentPosition.getName());</span>
 <span class="fc" id="L199">        int newIndex = (positionIndex + diceValue) % gameBoard.getCellNumber();</span>
-<span class="pc bpc" id="L200" title="1 of 4 branches missed.">        if (newIndex &lt;= positionIndex || diceValue &gt;= gameBoard.getCellNumber()) {</span>
-<span class="fc" id="L201">            player.setMoney(player.getMoney() + 200);</span>
+<span class="pc bpc" id="L200" title="2 of 4 branches missed.">        if (newIndex &lt;= positionIndex || diceValue &gt;= gameBoard.getCellNumber()) {</span>
+<span class="nc" id="L201">            player.setMoney(player.getMoney() + 200);</span>
         }
 <span class="fc" id="L203">        player.setPosition(gameBoard.getCell(newIndex));</span>
 <span class="fc" id="L204">        gui.movePlayer(getPlayerIndex(player), positionIndex, newIndex);</span>
@@ -209,10 +209,10 @@ public class GameMaster {
     public void playerMoved(Player player) {
 <span class="fc" id="L210">        Cell cell = player.getPosition();</span>
 <span class="fc" id="L211">        int playerIndex = getPlayerIndex(player);</span>
-<span class="fc bfc" id="L212" title="All 2 branches covered.">        if (cell instanceof CardCell) {</span>
-<span class="fc" id="L213">            gui.setDrawCardEnabled(true);</span>
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">        if (cell instanceof CardCell) {</span>
+<span class="nc" id="L213">            gui.setDrawCardEnabled(true);</span>
         } else {
-<span class="fc bfc" id="L215" title="All 2 branches covered.">            if (cell.isAvailable()) {</span>
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">            if (cell.isAvailable()) {</span>
 <span class="fc" id="L216">                int price = cell.getPrice();</span>
 <span class="pc bpc" id="L217" title="2 of 4 branches missed.">                if (price &lt;= player.getMoney() &amp;&amp; price &gt; 0) {</span>
 <span class="fc" id="L218">                    gui.enablePurchaseBtn(playerIndex);</span>
@@ -250,11 +250,11 @@ public class GameMaster {
 <span class="fc" id="L250">        player.setPosition(gameBoard.queryCell(&quot;Jail&quot;));</span>
 <span class="fc" id="L251">        player.setInJail(true);</span>
 <span class="fc" id="L252">        int jailIndex = gameBoard.queryCellIndex(&quot;Jail&quot;);</span>
-<span class="fc" id="L253">        gui.movePlayer(</span>
-<span class="fc" id="L254">                getPlayerIndex(player),</span>
+<span class="pc" id="L253">        gui.movePlayer(</span>
+<span class="nc" id="L254">                getPlayerIndex(player),</span>
                 oldPosition,
                 jailIndex);
-<span class="fc" id="L257">    }</span>
+<span class="nc" id="L257">    }</span>
 
     private void setAllButtonEnabled(boolean enabled) {
 <span class="fc" id="L260">        gui.setRollDiceEnabled(enabled);</span>
@@ -313,8 +313,8 @@ public class GameMaster {
 <span class="fc" id="L313">    }</span>
 
     public void utilRollDice() {
-<span class="fc" id="L316">        this.utilDiceRoll = gui.showUtilDiceRoll();</span>
-<span class="fc" id="L317">    }</span>
+<span class="nc" id="L316">        this.utilDiceRoll = gui.showUtilDiceRoll();</span>
+<span class="nc" id="L317">    }</span>
 
     public void setTestMode(boolean b) {
 <span class="fc" id="L320">        testMode = b;</span>

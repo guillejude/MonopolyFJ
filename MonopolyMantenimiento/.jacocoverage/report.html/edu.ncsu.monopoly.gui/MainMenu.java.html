@@ -5,20 +5,26 @@
  */
 package edu.ncsu.monopoly.gui;
 
+import edu.ncsu.monopoly.GameSystem;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Guillermo
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private Main main;
-    private String[] args;
-    
-<span class="nc" id="L17">    public MainMenu(Main main, String[] args) {</span>
-<span class="nc" id="L18">        initComponents();</span>
-<span class="nc" id="L19">        this.main = main;</span>
-<span class="nc" id="L20">        this.args = args;</span>
-<span class="nc" id="L21">    }</span>
+    GameSystem system;
+
+<span class="nc" id="L24">    public MainMenu(GameSystem system) {</span>
+<span class="nc" id="L25">        initComponents();</span>
+<span class="nc" id="L26">        this.system = system;</span>
+<span class="nc" id="L27">    }</span>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,72 +35,122 @@ public class MainMenu extends javax.swing.JFrame {
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L32">        lblTitle = new javax.swing.JLabel();</span>
-<span class="nc" id="L33">        btnPlay = new javax.swing.JButton();</span>
-<span class="nc" id="L34">        btnAddUserProfile = new javax.swing.JButton();</span>
-<span class="nc" id="L35">        jButton1 = new javax.swing.JButton();</span>
+<span class="nc" id="L38">        lblTitle = new javax.swing.JLabel();</span>
+<span class="nc" id="L39">        btnPlay = new javax.swing.JButton();</span>
+<span class="nc" id="L40">        btnAddUserProfile = new javax.swing.JButton();</span>
+<span class="nc" id="L41">        btnViewProfiles = new javax.swing.JButton();</span>
 
-<span class="nc" id="L37">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
-
-<span class="nc" id="L39">        lblTitle.setText(&quot;MONOPOLY&quot;);</span>
-
-<span class="nc" id="L41">        btnPlay.setText(&quot;PLAY&quot;);</span>
-<span class="nc" id="L42">        btnPlay.addMouseListener(new java.awt.event.MouseAdapter() {</span>
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-<span class="nc" id="L44">                btnPlayMouseClicked(evt);</span>
-<span class="nc" id="L45">            }</span>
+<span class="nc" id="L43">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L44">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L46">                formWindowClosing(evt);</span>
+<span class="nc" id="L47">            }</span>
         });
 
-<span class="nc" id="L48">        btnAddUserProfile.setText(&quot;ADD USER PROFILE&quot;);</span>
+<span class="nc" id="L50">        lblTitle.setText(&quot;MONOPOLY&quot;);</span>
 
-<span class="nc" id="L50">        jButton1.setText(&quot;VIEW PROFILE&quot;);</span>
+<span class="nc" id="L52">        btnPlay.setText(&quot;PLAY&quot;);</span>
+<span class="nc" id="L53">        btnPlay.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L55">                btnPlayMouseClicked(evt);</span>
+<span class="nc" id="L56">            }</span>
+        });
 
-<span class="nc" id="L52">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L53">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L54">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L55">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L56">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L57">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L58">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L59">                        .addGap(153, 153, 153)</span>
-<span class="nc" id="L60">                        .addComponent(lblTitle))</span>
-<span class="nc" id="L61">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L62">                        .addGap(115, 115, 115)</span>
-<span class="nc" id="L63">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L64">                            .addComponent(btnPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L65">                            .addComponent(btnAddUserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L66">                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))</span>
-<span class="nc" id="L67">                .addContainerGap(142, Short.MAX_VALUE))</span>
+<span class="nc" id="L59">        btnAddUserProfile.setText(&quot;ADD USER PROFILE&quot;);</span>
+<span class="nc" id="L60">        btnAddUserProfile.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L62">                btnAddUserProfileMouseClicked(evt);</span>
+<span class="nc" id="L63">            }</span>
+        });
+
+<span class="nc" id="L66">        btnViewProfiles.setText(&quot;VIEW PROFILES&quot;);</span>
+<span class="nc" id="L67">        btnViewProfiles.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L69">                btnViewProfilesMouseClicked(evt);</span>
+<span class="nc" id="L70">            }</span>
+        });
+
+<span class="nc" id="L73">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L74">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L75">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L76">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L77">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L78">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L79">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L80">                        .addGap(153, 153, 153)</span>
+<span class="nc" id="L81">                        .addComponent(lblTitle))</span>
+<span class="nc" id="L82">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L83">                        .addGap(115, 115, 115)</span>
+<span class="nc" id="L84">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L85">                            .addComponent(btnPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L86">                            .addComponent(btnAddUserProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L87">                            .addComponent(btnViewProfiles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))</span>
+<span class="nc" id="L88">                .addContainerGap(122, Short.MAX_VALUE))</span>
         );
-<span class="nc" id="L69">        layout.setVerticalGroup(</span>
-<span class="nc" id="L70">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L71">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L72">                .addContainerGap()</span>
-<span class="nc" id="L73">                .addComponent(lblTitle)</span>
-<span class="nc" id="L74">                .addGap(27, 27, 27)</span>
-<span class="nc" id="L75">                .addComponent(btnPlay)</span>
-<span class="nc" id="L76">                .addGap(28, 28, 28)</span>
-<span class="nc" id="L77">                .addComponent(btnAddUserProfile)</span>
-<span class="nc" id="L78">                .addGap(29, 29, 29)</span>
-<span class="nc" id="L79">                .addComponent(jButton1)</span>
-<span class="nc" id="L80">                .addContainerGap(112, Short.MAX_VALUE))</span>
+<span class="nc" id="L90">        layout.setVerticalGroup(</span>
+<span class="nc" id="L91">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L92">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L93">                .addContainerGap()</span>
+<span class="nc" id="L94">                .addComponent(lblTitle)</span>
+<span class="nc" id="L95">                .addGap(27, 27, 27)</span>
+<span class="nc" id="L96">                .addComponent(btnPlay)</span>
+<span class="nc" id="L97">                .addGap(28, 28, 28)</span>
+<span class="nc" id="L98">                .addComponent(btnAddUserProfile)</span>
+<span class="nc" id="L99">                .addGap(29, 29, 29)</span>
+<span class="nc" id="L100">                .addComponent(btnViewProfiles)</span>
+<span class="nc" id="L101">                .addContainerGap(85, Short.MAX_VALUE))</span>
         );
 
-<span class="nc" id="L83">        pack();</span>
-<span class="nc" id="L84">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L104">        pack();</span>
+<span class="nc" id="L105">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void btnPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayMouseClicked
-<span class="nc" id="L87">        GameSetUp gameSetUpWindow = new GameSetUp(this, main, args);</span>
-<span class="nc" id="L88">        gameSetUpWindow.setVisible(true);</span>
-<span class="nc" id="L89">        this.setEnabled(false);</span>
-<span class="nc" id="L90">        this.setVisible(false);</span>
-<span class="nc" id="L91">    }//GEN-LAST:event_btnPlayMouseClicked</span>
+<span class="nc" id="L108">        GameSetUp gameSetUpWindow = new GameSetUp(this,system);</span>
+<span class="nc" id="L109">        gameSetUpWindow.setVisible(true);</span>
+<span class="nc" id="L110">        this.setEnabled(false);</span>
+<span class="nc" id="L111">        this.setVisible(false);</span>
+<span class="nc" id="L112">    }//GEN-LAST:event_btnPlayMouseClicked</span>
+
+    private void btnAddUserProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserProfileMouseClicked
+<span class="nc" id="L115">        AddUser addUserWindow = new AddUser(this, system);</span>
+<span class="nc" id="L116">        addUserWindow.setVisible(true);</span>
+<span class="nc" id="L117">        this.setEnabled(false);</span>
+<span class="nc" id="L118">        this.setVisible(false);</span>
+<span class="nc" id="L119">    }//GEN-LAST:event_btnAddUserProfileMouseClicked</span>
+
+    private void btnViewProfilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewProfilesMouseClicked
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        if (system.getProfiles().isEmpty()) {</span>
+<span class="nc" id="L123">            JOptionPane.showMessageDialog(null, &quot;There are no profiles on the system&quot;);</span>
+        } else {
+<span class="nc" id="L125">            ViewProfiles viewProfilesWindow = new ViewProfiles(this, system);</span>
+<span class="nc" id="L126">            viewProfilesWindow.setVisible(true);</span>
+<span class="nc" id="L127">            this.setEnabled(false);</span>
+<span class="nc" id="L128">            this.setVisible(false);</span>
+        }
+<span class="nc" id="L130">    }//GEN-LAST:event_btnViewProfilesMouseClicked</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //save data before closing the window
+        FileOutputStream fileOut;
+        try {
+<span class="nc" id="L136">            fileOut = new FileOutputStream(&quot;savedFiles.txt&quot;);</span>
+<span class="nc" id="L137">            BufferedOutputStream bufferOut = new BufferedOutputStream(fileOut);</span>
+<span class="nc" id="L138">            ObjectOutputStream out = new ObjectOutputStream(bufferOut);</span>
+<span class="nc" id="L139">            out.writeObject(system);</span>
+<span class="nc" id="L140">            out.flush();</span>
+<span class="nc" id="L141">            out.close();</span>
+<span class="nc" id="L142">        } catch (FileNotFoundException ex) {</span>
+
+<span class="nc" id="L144">        } catch (IOException e) {</span>
+
+<span class="nc" id="L146">        }</span>
+<span class="nc" id="L147">    }//GEN-LAST:event_formWindowClosing</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddUserProfile;
     private javax.swing.JButton btnPlay;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnViewProfiles;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

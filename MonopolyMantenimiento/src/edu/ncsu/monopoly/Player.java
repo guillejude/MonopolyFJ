@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 
 
@@ -299,6 +300,11 @@ public class Player {
 
     public void setPlaysWithImage(boolean playsWithImage) {
         this.playsWithImage = playsWithImage;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.name.equals(((Player)obj).name);
     }
     
     
