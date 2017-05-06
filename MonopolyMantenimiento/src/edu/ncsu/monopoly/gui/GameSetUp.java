@@ -324,7 +324,7 @@ public class GameSetUp extends javax.swing.JFrame {
         }
         if (inputsAreValid) {
             player.setName(name);
-            if (players.contains(player)) {
+            if (isAlreadyChosen(player)) {
                 JOptionPane.showMessageDialog(null, "Name and/or User profile already chosen for this game, please chose another");
             } else {
                 player.setPlayerColor(currentColor);
@@ -443,4 +443,13 @@ public class GameSetUp extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdBtnRegisteredPlayer;
     private javax.swing.JTextField txtFldPlayerName;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isAlreadyChosen(Player player) {
+        for(int i = 0; i < players.size(); i++){
+            if(players.get(i).getName().equals(player.getName())){
+                return true;
+            }
+        }
+        return false;
+   }
 }

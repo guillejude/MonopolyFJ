@@ -14,21 +14,93 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L15">public class Main {</span>
 
+    private static int inputNumberOfPlayers(MainWindow window) {
+<span class="nc" id="L18">        int numPlayers = 0;</span>
+<span class="nc bnc" id="L19" title="All 4 branches missed.">        while (numPlayers &lt;= 0 || numPlayers &gt; GameMaster.MAX_PLAYER) {</span>
+<span class="nc" id="L20">            String numberOfPlayers = JOptionPane.showInputDialog(window, &quot;How many players&quot;);</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">            if (numberOfPlayers == null) {</span>
+<span class="nc" id="L22">                System.exit(0);</span>
+            }
+            try {
+<span class="nc" id="L25">                numPlayers = Integer.parseInt(numberOfPlayers);</span>
+<span class="nc" id="L26">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L27">                JOptionPane.showMessageDialog(window, &quot;Please input a number&quot;);</span>
+<span class="nc" id="L28">            }</span>
+<span class="nc bnc" id="L29" title="All 4 branches missed.">            if (numPlayers &lt;= 0 || numPlayers &gt; GameMaster.MAX_PLAYER) {</span>
+<span class="nc" id="L30">                JOptionPane.showMessageDialog(window, &quot;Please input a number between one and eight&quot;);</span>
+            } else {
+<span class="nc" id="L32">                GameMaster.instance().setNumberOfPlayers(numPlayers);</span>
+            }
+<span class="nc" id="L34">        }</span>
+<span class="nc" id="L35">        return numPlayers;</span>
+    }
+
     public static void main(String[] args) {
-<span class="nc" id="L18">        GameSystem system = new GameSystem();</span>
-        try {
-            //try reading the saved data for the system
-<span class="nc" id="L21">            FileInputStream fileIn = new FileInputStream(&quot;savedFiles.txt&quot;);</span>
-<span class="nc" id="L22">            BufferedInputStream bufferIn = new BufferedInputStream(fileIn);</span>
-<span class="nc" id="L23">            ObjectInputStream in = new ObjectInputStream(bufferIn);</span>
-<span class="nc" id="L24">            system = ((GameSystem) in.readObject());</span>
-<span class="nc" id="L25">        } catch (IOException e1) {</span>
-<span class="nc" id="L26">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);</span>
-<span class="nc" id="L27">        } catch (ClassNotFoundException e2) {</span>
-<span class="nc" id="L28">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);</span>
-<span class="nc" id="L29">        }</span>
-<span class="nc" id="L30">        MainMenu mainMenuWindow = new MainMenu(system);</span>
-<span class="nc" id="L31">        mainMenuWindow.setVisible(true);</span>
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L39">        GameMaster master = GameMaster.instance();</span>
+<span class="nc" id="L40">        MainWindow window = new MainWindow();</span>
+<span class="nc" id="L41">        GameBoard gameBoard = null;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (args.length &gt; 0) {</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (args[0].equals(&quot;test&quot;)) {</span>
+<span class="nc" id="L44">                master.setTestMode(true);</span>
+            }
+            try {
+<span class="nc" id="L47">                Class c = Class.forName(args[1]);</span>
+<span class="nc" id="L48">                gameBoard = (GameBoard) c.newInstance();</span>
+<span class="nc" id="L49">            } catch (ClassNotFoundException e) {</span>
+<span class="nc" id="L50">                JOptionPane.showMessageDialog(window, &quot;Class Not Found.  Program will exit&quot;);</span>
+<span class="nc" id="L51">                System.exit(0);</span>
+<span class="nc" id="L52">            } catch (IllegalAccessException e) {</span>
+<span class="nc" id="L53">                JOptionPane.showMessageDialog(window, &quot;Illegal Access of Class.  Program will exit&quot;);</span>
+<span class="nc" id="L54">                System.exit(0);</span>
+<span class="nc" id="L55">            } catch (InstantiationException e) {</span>
+<span class="nc" id="L56">                JOptionPane.showMessageDialog(window, &quot;Class Cannot be Instantiated.  Program will exit&quot;);</span>
+<span class="nc" id="L57">                System.exit(0);</span>
+<span class="nc" id="L58">            }</span>
+        } else {
+<span class="nc" id="L60">            gameBoard = new GameBoardFull();</span>
+        }
+
+//      GameBoard gameBoard = new GameBoardFull();
+//		GameBoard gameBoard = new GameBoardCCMovePlayer();
+//		GameBoard gameBoard = new GameBoardCCLoseMoney();
+//		GameBoard gameBoard = new GameBoardCCJail();
+//		GameBoard gameBoard = new GameBoardUtility();
+//		GameBoard gameBoard = new GameBoardRailRoad();
+//		GameBoard gameBoard = new GameBoard14();
+//		GameBoard gameBoard = new SimpleGameBoard();
+//		GameBoard gameBoard = new GameBoardJail();
+//		GameBoard gameBoard = new GameBoardFreeParking();
+<span class="nc" id="L73">        master.setGameBoard(gameBoard);</span>
+<span class="nc" id="L74">        int numPlayers = inputNumberOfPlayers(window);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        for (int i = 0; i &lt; numPlayers; i++) {</span>
+<span class="nc" id="L76">            String name</span>
+<span class="nc" id="L77">                    = JOptionPane.showInputDialog(window, &quot;Please input name for Player &quot; + (i + 1));</span>
+<span class="nc" id="L78">            GameMaster.instance().getPlayer(i).setName(name);</span>
+        }
+<span class="nc" id="L80">        window.setupGameBoard(gameBoard);</span>
+<span class="nc" id="L81">        window.show();</span>
+<span class="nc" id="L82">        master.setGUI(window);</span>
+<span class="nc" id="L83">        master.startGame();</span>
+<span class="nc" id="L84">    }</span>
 }
+
+/*public class Main {
+
+ public static void main(String[] args) {
+ GameSystem system = new GameSystem();
+ try {
+ //try reading the saved data for the system
+ FileInputStream fileIn = new FileInputStream(&quot;savedFiles.txt&quot;);
+ BufferedInputStream bufferIn = new BufferedInputStream(fileIn);
+ ObjectInputStream in = new ObjectInputStream(bufferIn);
+ system = ((GameSystem) in.readObject());
+ } catch (IOException e1) {
+ Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);
+ } catch (ClassNotFoundException e2) {
+ Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);
+ }
+ MainMenu mainMenuWindow = new MainMenu(system);
+ mainMenuWindow.setVisible(true);
+ }
+ }*/
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

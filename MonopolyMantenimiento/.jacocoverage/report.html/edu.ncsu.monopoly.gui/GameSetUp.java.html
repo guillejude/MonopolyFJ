@@ -77,7 +77,7 @@ public class GameSetUp extends javax.swing.JFrame {
     public void startGame() {
         //opens game window and starts game
 <span class="nc" id="L79">        GameMaster master = GameMaster.instance();</span>
-<span class="nc" id="L80">        MainWindow window = new MainWindow(parent);</span>
+<span class="nc" id="L80">        MainWindow window = new MainWindow();</span>
 <span class="nc" id="L81">        GameBoard gameBoard = new GameBoardFull();</span>
 <span class="nc" id="L82">        master.setGameBoard(gameBoard);</span>
 <span class="nc" id="L83">        master.setNumberOfPlayers(numberOfPlayers);</span>
