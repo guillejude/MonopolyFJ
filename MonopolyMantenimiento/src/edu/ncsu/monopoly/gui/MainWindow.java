@@ -254,4 +254,8 @@ public class MainWindow extends JFrame implements MonopolyGUI {
     public void anounceWinner(String name) {
         JOptionPane.showMessageDialog(null,name + " has won!");
     }
+    
+    public void anouncePassByGo() {
+        JOptionPane.showMessageDialog(null,"Passed through Go, collect $200!");
+    }
 }

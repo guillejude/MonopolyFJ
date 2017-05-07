@@ -200,6 +200,7 @@ public class GameMaster {
         int newIndex = (positionIndex + diceValue) % gameBoard.getCellNumber();
         if (newIndex <= positionIndex || diceValue >= gameBoard.getCellNumber()) {
             player.setMoney(player.getMoney() + 200);
+            gui.anouncePassByGo();
         }
         player.setPosition(gameBoard.getCell(newIndex));
         gui.movePlayer(getPlayerIndex(player), positionIndex, newIndex);
