@@ -50,19 +50,17 @@ public class GameSetUp extends javax.swing.JFrame {
         this.playerNumber = 1;
         this.numberOfPlayers = 1;
         this.players = new ArrayList<>();
-        this.currentColor = Color.GREEN;
+        this.currentColor = null;
         this.currentImage = null;
 
         btnGrpIdentifier.add(rdBtnChooseColor);
         btnGrpIdentifier.add(rdBtnChooseImage);
         btnGrpName.add(rdBtnNewPlayer);
         btnGrpName.add(rdBtnRegisteredPlayer);
-        rdBtnChooseColor.setSelected(true);
         rdBtnNewPlayer.setSelected(true);
         cmbBxUserProfiles.setEnabled(false);
         setUpComboBox();
         lblIdentifierChosen.setOpaque(true);
-        lblIdentifierChosen.setBackground(currentColor);
 
     }
 
@@ -169,8 +167,6 @@ public class GameSetUp extends javax.swing.JFrame {
                 rdBtnChooseImageActionPerformed(evt);
             }
         });
-
-        lblIdentifierChosen.setBackground(new java.awt.Color(153, 153, 0));
 
         lblOrIdentifier.setText("or");
 
@@ -318,9 +314,16 @@ public class GameSetUp extends javax.swing.JFrame {
             name = txtFldPlayerName.getText();
             if (name.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Name must not be empty");
+                inputsAreValid = false;
             } else {
                 inputsAreValid = true;
             }
+        }
+        if(rdBtnChooseImage.isSelected() || rdBtnChooseColor.isSelected()){
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "You must choose a color or an image to identify yourself with");
+            inputsAreValid = false;
         }
         if (inputsAreValid) {
             player.setName(name);
@@ -354,10 +357,8 @@ public class GameSetUp extends javax.swing.JFrame {
         lblPlayerInfo.setText("Player " + playerNumber + " Info");
         txtFldPlayerName.setText("");
         currentImage = null;
-        currentColor = Color.GREEN;
-        rdBtnChooseColor.setSelected(true);
+        currentColor = null;
         lblIdentifierChosen.setIcon(null);
-        lblIdentifierChosen.setBackground(currentColor);
         txtFldPlayerName.setEnabled(true);
         cmbBxUserProfiles.setEnabled(false);
         rdBtnNewPlayer.setSelected(true);
@@ -375,6 +376,9 @@ public class GameSetUp extends javax.swing.JFrame {
         currentImage = null;
         lblIdentifierChosen.setIcon(null);
         lblIdentifierChosen.setBackground(currentColor);
+        if(currentColor==null){
+            btnGrpIdentifier.clearSelection();
+        }
     }//GEN-LAST:event_rdBtnChooseColorActionPerformed
 
     private void rdBtnChooseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnChooseImageActionPerformed
@@ -392,10 +396,9 @@ public class GameSetUp extends javax.swing.JFrame {
             lblIdentifierChosen.setIcon(currentImage);
             currentColor = null;
         }catch(RuntimeException ex){
-            
+            btnGrpIdentifier.clearSelection();
         }catch (Exception ex) {
-            rdBtnChooseColor.setSelected(true);
-            rdBtnChooseImage.setSelected(false);
+            btnGrpIdentifier.clearSelection();
         }
     }//GEN-LAST:event_rdBtnChooseImageActionPerformed
 

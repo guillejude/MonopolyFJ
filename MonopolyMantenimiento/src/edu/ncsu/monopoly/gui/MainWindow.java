@@ -229,7 +229,7 @@ public class MainWindow extends JFrame implements MonopolyGUI {
     public int showTaxiMovement() {
         int movement = 0;
         while (movement == 0) {
-            String movementInput = JOptionPane.showInputDialog(this, "Enter the number of spaces you wish to move (1-6)");
+            String movementInput = JOptionPane.showInputDialog(null, "Enter the number of spaces you wish to move (1-6)", "Taxi Card");
             if (movementInput != null) {
                 try {
                     movement = Integer.parseInt(movementInput);
