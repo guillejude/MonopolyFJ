@@ -5,9 +5,7 @@
  */
 package edu.ncsu.monopoly;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
-import java.util.Objects;
 import javax.swing.ImageIcon;
 
 /**

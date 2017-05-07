@@ -5,9 +5,7 @@
  */
 package edu.ncsu.monopoly;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
-import java.util.Objects;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,60 +18,60 @@ public class UserProfile implements Serializable{
     private int gamesWon;
     private ImageIcon image;
 
-<span class="fc" id="L23">    public UserProfile() {</span>
-<span class="fc" id="L24">        this.name = &quot;&quot;;</span>
-<span class="fc" id="L25">        this.gamesPlayed = 0;</span>
-<span class="fc" id="L26">        this.gamesWon = 0;</span>
-<span class="fc" id="L27">        image = null;</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L21">    public UserProfile() {</span>
+<span class="fc" id="L22">        this.name = &quot;&quot;;</span>
+<span class="fc" id="L23">        this.gamesPlayed = 0;</span>
+<span class="fc" id="L24">        this.gamesWon = 0;</span>
+<span class="fc" id="L25">        image = null;</span>
+<span class="fc" id="L26">    }</span>
     
-<span class="fc" id="L30">    public UserProfile(String name, ImageIcon image) {</span>
-<span class="fc" id="L31">        this.name = name;</span>
-<span class="fc" id="L32">        this.image = image;</span>
-<span class="fc" id="L33">        this.gamesPlayed = 0;</span>
-<span class="fc" id="L34">        this.gamesWon = 0;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L28">    public UserProfile(String name, ImageIcon image) {</span>
+<span class="fc" id="L29">        this.name = name;</span>
+<span class="fc" id="L30">        this.image = image;</span>
+<span class="fc" id="L31">        this.gamesPlayed = 0;</span>
+<span class="fc" id="L32">        this.gamesWon = 0;</span>
+<span class="fc" id="L33">    }</span>
 
     public String getName() {
-<span class="fc" id="L38">        return name;</span>
+<span class="fc" id="L36">        return name;</span>
     }
 
     public void setName(String name) {
-<span class="fc" id="L42">        this.name = name;</span>
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L40">        this.name = name;</span>
+<span class="fc" id="L41">    }</span>
 
     public int getGamesPlayed() {
-<span class="fc" id="L46">        return gamesPlayed;</span>
+<span class="fc" id="L44">        return gamesPlayed;</span>
     }
 
     public void setGamesPlayed(int gamesPlayed) {
-<span class="fc" id="L50">        this.gamesPlayed = gamesPlayed;</span>
-<span class="fc" id="L51">    }</span>
+<span class="fc" id="L48">        this.gamesPlayed = gamesPlayed;</span>
+<span class="fc" id="L49">    }</span>
 
     public int getGamesWon() {
-<span class="fc" id="L54">        return gamesWon;</span>
+<span class="fc" id="L52">        return gamesWon;</span>
     }
 
     public void setGamesWon(int gamesWon) {
-<span class="fc" id="L58">        this.gamesWon = gamesWon;</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L56">        this.gamesWon = gamesWon;</span>
+<span class="fc" id="L57">    }</span>
 
     public ImageIcon getImage() {
-<span class="fc" id="L62">        return image;</span>
+<span class="fc" id="L60">        return image;</span>
     }
 
     public void setImage(ImageIcon image) {
-<span class="fc" id="L66">        this.image = image;</span>
-<span class="fc" id="L67">    }</span>
+<span class="fc" id="L64">        this.image = image;</span>
+<span class="fc" id="L65">    }</span>
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if(obj==null){</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">            return this == null;</span>
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        }else if(obj instanceof UserProfile){</span>
-<span class="fc" id="L74">            return this.name.equals(((UserProfile)obj).name);</span>
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if(obj==null){</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            return this == null;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        }else if(obj instanceof UserProfile){</span>
+<span class="fc" id="L72">            return this.name.equals(((UserProfile)obj).name);</span>
         }
-<span class="nc" id="L76">        return false;</span>
+<span class="nc" id="L74">        return false;</span>
     }
     
     

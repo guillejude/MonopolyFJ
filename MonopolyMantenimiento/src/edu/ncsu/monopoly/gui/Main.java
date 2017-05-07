@@ -22,10 +22,8 @@ public class Main {
             BufferedInputStream bufferIn = new BufferedInputStream(fileIn);
             ObjectInputStream in = new ObjectInputStream(bufferIn);
             system = ((GameSystem) in.readObject());
-        } catch (IOException e1) {
+        } catch (IOException | ClassNotFoundException e1) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);
-        } catch (ClassNotFoundException e2) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);
         }
         MainMenu mainMenuWindow = new MainMenu(system);
         mainMenuWindow.setVisible(true);

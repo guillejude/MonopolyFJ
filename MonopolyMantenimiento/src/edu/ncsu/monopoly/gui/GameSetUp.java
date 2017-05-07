@@ -319,8 +319,8 @@ public class GameSetUp extends javax.swing.JFrame {
                 inputsAreValid = true;
             }
         }
-        if(rdBtnChooseImage.isSelected() || rdBtnChooseColor.isSelected()){
-            
+        if (rdBtnChooseImage.isSelected() || rdBtnChooseColor.isSelected()) {
+
         } else {
             JOptionPane.showMessageDialog(null, "You must choose a color or an image to identify yourself with");
             inputsAreValid = false;
@@ -362,6 +362,7 @@ public class GameSetUp extends javax.swing.JFrame {
         txtFldPlayerName.setEnabled(true);
         cmbBxUserProfiles.setEnabled(false);
         rdBtnNewPlayer.setSelected(true);
+        resetIdentifier();
     }
     private void cmbBxNumPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxNumPlayersActionPerformed
         //Reset the input of player's info
@@ -376,8 +377,8 @@ public class GameSetUp extends javax.swing.JFrame {
         currentImage = null;
         lblIdentifierChosen.setIcon(null);
         lblIdentifierChosen.setBackground(currentColor);
-        if(currentColor==null){
-            btnGrpIdentifier.clearSelection();
+        if (currentColor == null) {
+            resetIdentifier();
         }
     }//GEN-LAST:event_rdBtnChooseColorActionPerformed
 
@@ -395,10 +396,10 @@ public class GameSetUp extends javax.swing.JFrame {
             currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
             lblIdentifierChosen.setIcon(currentImage);
             currentColor = null;
-        }catch(RuntimeException ex){
-            btnGrpIdentifier.clearSelection();
-        }catch (Exception ex) {
-            btnGrpIdentifier.clearSelection();
+        } catch (RuntimeException ex) {
+            resetIdentifier();
+        } catch (Exception ex) {
+            resetIdentifier();
         }
     }//GEN-LAST:event_rdBtnChooseImageActionPerformed
 
@@ -450,11 +451,17 @@ public class GameSetUp extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean isAlreadyChosen(Player player) {
-        for(int i = 0; i < players.size(); i++){
-            if(players.get(i).getName().equals(player.getName())){
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getName().equals(player.getName())) {
                 return true;
             }
         }
         return false;
-   }
+    }
+
+    private void resetIdentifier() {
+        btnGrpIdentifier.clearSelection();
+        lblIdentifierChosen.setBackground(null);
+        lblIdentifierChosen.setIcon(null);
+    }
 }

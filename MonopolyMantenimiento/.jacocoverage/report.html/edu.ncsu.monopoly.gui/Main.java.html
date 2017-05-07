@@ -22,13 +22,11 @@ import java.util.logging.Logger;
 <span class="nc" id="L22">            BufferedInputStream bufferIn = new BufferedInputStream(fileIn);</span>
 <span class="nc" id="L23">            ObjectInputStream in = new ObjectInputStream(bufferIn);</span>
 <span class="nc" id="L24">            system = ((GameSystem) in.readObject());</span>
-<span class="nc" id="L25">        } catch (IOException e1) {</span>
+<span class="nc" id="L25">        } catch (IOException | ClassNotFoundException e1) {</span>
 <span class="nc" id="L26">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e1);</span>
-<span class="nc" id="L27">        } catch (ClassNotFoundException e2) {</span>
-<span class="nc" id="L28">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e2);</span>
-<span class="nc" id="L29">        }</span>
-<span class="nc" id="L30">        MainMenu mainMenuWindow = new MainMenu(system);</span>
-<span class="nc" id="L31">        mainMenuWindow.setVisible(true);</span>
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">        MainMenu mainMenuWindow = new MainMenu(system);</span>
+<span class="nc" id="L29">        mainMenuWindow.setVisible(true);</span>
+<span class="nc" id="L30">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
