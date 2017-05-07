@@ -25,5 +25,7 @@ public interface MonopolyGUI {
 	public void startGame();
 	public void update();
         
+        public void close();
+        public void anounceWinner(String name);
         public int showTaxiMovement();
 }

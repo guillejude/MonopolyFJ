@@ -296,10 +296,16 @@ public class GameMaster {
         gui.startGame();
         gui.enablePlayerTurn(0);
         gui.setTradeEnabled(0, true);
+        for(int i = 0; i< getNumberOfPlayers(); i++){
+            Player asd = getPlayer(i);
+            int gamesPlayed = asd.getUserProfile().getGamesPlayed() + 1; 
+            getPlayer(i).getUserProfile().setGamesPlayed(gamesPlayed);
+        }
     }
 
     public void switchTurn() {
         turn = (turn + 1) % getNumberOfPlayers();
+        checkIfWon();
         if (!getCurrentPlayer().isInJail()) {
             gui.enablePlayerTurn(turn);
             gui.setBuyHouseEnabled(getCurrentPlayer().canBuyHouse());
@@ -323,5 +329,26 @@ public class GameMaster {
 
     public int getTaxiMovement() {
         return gui.showTaxiMovement();
+    }
+
+    private void checkIfWon() {
+        //checks to see if every player but one is bankrupt
+        int numberOfPlayersBankrupt = 0;
+        int winner = -1;
+        for(int i = 0; i< getNumberOfPlayers(); i++){
+            if(getPlayer(i).isBankrupt()){
+                numberOfPlayersBankrupt++;
+            }else{
+                winner = i;
+            }
+        }
+        if(numberOfPlayersBankrupt == getNumberOfPlayers()-1){
+            //player winner has won
+            gui.anounceWinner(getPlayer(winner).getName());
+            gui.close();
+            int gamesWon = getPlayer(winner).getUserProfile().getGamesWon() + 1; 
+            getPlayer(winner).getUserProfile().setGamesWon(gamesWon);
+        }
+
     }
 }

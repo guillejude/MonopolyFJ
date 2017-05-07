@@ -12,6 +12,7 @@ public class Player {
     private Color playerColor;
     private ImageIcon playerImage;
     private boolean playsWithImage;
+    private UserProfile userProfile;
 
     //the key of colorGroups is the name of the color group.
     private Hashtable colorGroups = new Hashtable();
@@ -300,4 +301,13 @@ public class Player {
         this.playsWithImage = playsWithImage;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    
 }

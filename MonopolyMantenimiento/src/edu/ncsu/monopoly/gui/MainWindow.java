@@ -244,4 +244,14 @@ public class MainWindow extends JFrame implements MonopolyGUI {
         }
         return movement;
     }
+
+    public void close() {
+        this.dispose();
+        parent.setEnabled(true);
+        parent.setVisible(true);
+    }
+
+    public void anounceWinner(String name) {
+        JOptionPane.showMessageDialog(null,name + " has won!");
+    }
 }

@@ -86,6 +86,7 @@ public class GameSetUp extends javax.swing.JFrame {
             player.setPlayerColor(players.get(i).getPlayerColor());
             player.setPlayerImage(players.get(i).getPlayerImage());
             player.setPlaysWithImage(players.get(i).isPlaysWithImage());
+            player.setUserProfile(players.get(i).getUserProfile());
         }
         window.setupGameBoard(gameBoard);
         window.show();
@@ -308,10 +309,12 @@ public class GameSetUp extends javax.swing.JFrame {
         if (rdBtnRegisteredPlayer.isSelected()) {
             int userNumber = cmbBxUserProfiles.getSelectedIndex();
             UserProfile userSelected = system.getProfiles().get(userNumber);
+            player.setUserProfile(userSelected);
             name = userSelected.getName();
             inputsAreValid = true;
         } else {
             name = txtFldPlayerName.getText();
+            player.setUserProfile(new UserProfile());
             if (name.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Name must not be empty");
                 inputsAreValid = false;
