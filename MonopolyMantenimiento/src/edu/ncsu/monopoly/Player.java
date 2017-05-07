@@ -231,21 +231,25 @@ public class Player {
 
     public void sellProperty(Cell property, int amount) {
         property.setOwner(null);
-        try {
-            if (property instanceof PropertyCell) {
-                properties.remove(property);
-            }
-            if (property instanceof RailRoadCell) {
-                railroads.remove(property);
-            }
-            if (property instanceof UtilityCell) {
-                utilities.remove(property);
-            }
+        boolean sold = false;
+
+        if (property instanceof PropertyCell) {
+            properties.remove(property);
+            sold = true;
+        }
+        if (property instanceof RailRoadCell) {
+            railroads.remove(property);
+            sold = true;
+        }
+        if (property instanceof UtilityCell) {
+            utilities.remove(property);
+            sold = true;
+        }
+        if (sold) {
             setMoney(getMoney() + amount);
-        } catch (Exception e) {
+        } else {
             property.setOwner(this);
         }
-
     }
 
     public void setInJail(boolean inJail) {
@@ -310,5 +314,4 @@ public class Player {
         this.userProfile = userProfile;
     }
 
-    
 }
