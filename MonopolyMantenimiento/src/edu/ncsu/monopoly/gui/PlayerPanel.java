@@ -94,49 +94,35 @@ public class PlayerPanel extends JPanel {
 
         setBorder(new BevelBorder(BevelBorder.RAISED));
 
-        btnRollDice.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnRollDiceClicked();
-            }
+        btnRollDice.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnRollDiceClicked();
         });
 
-        btnEndTurn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnEndTurnClicked();
-            }
+        btnEndTurn.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnEndTurnClicked();
         });
 
-        btnPurchaseProperty.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnPurchasePropertyClicked();
-            }
+        btnPurchaseProperty.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnPurchasePropertyClicked();
         });
 
-        btnBuyHouse.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnBuyHouseClicked();
-            }
+        btnBuyHouse.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnBuyHouseClicked();
         });
 
-        btnGetOutOfJail.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnGetOutOfJailClicked();
-            }
+        btnGetOutOfJail.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnGetOutOfJailClicked();
         });
 
-        btnDrawCard.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Card card = GameMaster.instance().btnDrawCardClicked();
-                JOptionPane
-                        .showMessageDialog(PlayerPanel.this, card.getLabel());
-                displayInfo();
-            }
+        btnDrawCard.addActionListener((ActionEvent e) -> {
+            Card card = GameMaster.instance().btnDrawCardClicked();
+            JOptionPane
+                    .showMessageDialog(PlayerPanel.this, card.getLabel());
+            displayInfo();
         });
 
-        btnTrade.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GameMaster.instance().btnTradeClicked();
-            }
+        btnTrade.addActionListener((ActionEvent e) -> {
+            GameMaster.instance().btnTradeClicked();
         });
     }
 

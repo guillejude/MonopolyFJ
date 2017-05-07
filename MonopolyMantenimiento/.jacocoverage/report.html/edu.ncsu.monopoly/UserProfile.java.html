@@ -68,7 +68,12 @@ public class UserProfile implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-<span class="fc" id="L71">        return this.name.equals(((UserProfile)obj).name);</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if(obj==null){</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            return this == null;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        }else if(obj instanceof UserProfile){</span>
+<span class="fc" id="L74">            return this.name.equals(((UserProfile)obj).name);</span>
+        }
+<span class="nc" id="L76">        return false;</span>
     }
     
     

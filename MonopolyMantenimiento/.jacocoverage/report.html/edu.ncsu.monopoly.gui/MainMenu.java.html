@@ -135,14 +135,14 @@ public class MainMenu extends javax.swing.JFrame {
         try {
 <span class="nc" id="L136">            fileOut = new FileOutputStream(&quot;savedFiles.txt&quot;);</span>
 <span class="nc" id="L137">            BufferedOutputStream bufferOut = new BufferedOutputStream(fileOut);</span>
-<span class="nc" id="L138">            ObjectOutputStream out = new ObjectOutputStream(bufferOut);</span>
-<span class="nc" id="L139">            out.writeObject(system);</span>
-<span class="nc" id="L140">            out.flush();</span>
-<span class="nc" id="L141">            out.close();</span>
+<span class="nc" id="L138">            try (ObjectOutputStream out = new ObjectOutputStream(bufferOut)) {</span>
+<span class="nc" id="L139">                out.writeObject(system);</span>
+<span class="nc" id="L140">                out.flush();</span>
+<span class="nc bnc" id="L141" title="All 8 branches missed.">            }</span>
 <span class="nc" id="L142">        } catch (FileNotFoundException ex) {</span>
-
+<span class="nc" id="L143">            JOptionPane.showMessageDialog(null, &quot;An error has ocurred while saving the system data, information could have been lost&quot;);</span>
 <span class="nc" id="L144">        } catch (IOException e) {</span>
-
+<span class="nc" id="L145">            JOptionPane.showMessageDialog(null, &quot;An error has ocurred while saving the system data, information could have been lost&quot;);</span>
 <span class="nc" id="L146">        }</span>
 <span class="nc" id="L147">    }//GEN-LAST:event_formWindowClosing</span>
 

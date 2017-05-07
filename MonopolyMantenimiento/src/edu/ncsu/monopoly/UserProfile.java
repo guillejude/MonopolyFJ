@@ -68,7 +68,12 @@ public class UserProfile implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        return this.name.equals(((UserProfile)obj).name);
+        if(obj==null){
+            return this == null;
+        }else if(obj instanceof UserProfile){
+            return this.name.equals(((UserProfile)obj).name);
+        }
+        return false;
     }
     
     

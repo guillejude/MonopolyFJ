@@ -391,37 +391,39 @@ public class GameSetUp extends javax.swing.JFrame {
 <span class="nc" id="L391">            currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));</span>
 <span class="nc" id="L392">            lblIdentifierChosen.setIcon(currentImage);</span>
 <span class="nc" id="L393">            currentColor = null;</span>
-<span class="nc" id="L394">        } catch (Exception ex) {</span>
-<span class="nc" id="L395">            rdBtnChooseColor.setSelected(true);</span>
-<span class="nc" id="L396">            rdBtnChooseImage.setSelected(false);</span>
-<span class="nc" id="L397">        }</span>
-<span class="nc" id="L398">    }//GEN-LAST:event_rdBtnChooseImageActionPerformed</span>
+<span class="nc" id="L394">        }catch(RuntimeException ex){</span>
+            
+<span class="nc" id="L396">        }catch (Exception ex) {</span>
+<span class="nc" id="L397">            rdBtnChooseColor.setSelected(true);</span>
+<span class="nc" id="L398">            rdBtnChooseImage.setSelected(false);</span>
+<span class="nc" id="L399">        }</span>
+<span class="nc" id="L400">    }//GEN-LAST:event_rdBtnChooseImageActionPerformed</span>
 
     private void rdBtnNewPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnNewPlayerActionPerformed
-<span class="nc" id="L401">        txtFldPlayerName.setEnabled(true);</span>
-<span class="nc" id="L402">        cmbBxUserProfiles.setEnabled(false);</span>
-<span class="nc" id="L403">    }//GEN-LAST:event_rdBtnNewPlayerActionPerformed</span>
+<span class="nc" id="L403">        txtFldPlayerName.setEnabled(true);</span>
+<span class="nc" id="L404">        cmbBxUserProfiles.setEnabled(false);</span>
+<span class="nc" id="L405">    }//GEN-LAST:event_rdBtnNewPlayerActionPerformed</span>
 
     private void rdBtnRegisteredPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnRegisteredPlayerActionPerformed
-<span class="nc bnc" id="L406" title="All 2 branches missed.">        if (system.getProfiles().size() == 0) {</span>
-<span class="nc" id="L407">            JOptionPane.showMessageDialog(null, &quot;There are no registered user profiles on the system, select to play as a New Player&quot;);</span>
-<span class="nc" id="L408">            txtFldPlayerName.setEnabled(true);</span>
-<span class="nc" id="L409">            cmbBxUserProfiles.setEnabled(false);</span>
+<span class="nc bnc" id="L408" title="All 2 branches missed.">        if (system.getProfiles().size() == 0) {</span>
+<span class="nc" id="L409">            JOptionPane.showMessageDialog(null, &quot;There are no registered user profiles on the system, select to play as a New Player&quot;);</span>
+<span class="nc" id="L410">            txtFldPlayerName.setEnabled(true);</span>
+<span class="nc" id="L411">            cmbBxUserProfiles.setEnabled(false);</span>
         } else {
-<span class="nc" id="L411">            txtFldPlayerName.setEnabled(false);</span>
-<span class="nc" id="L412">            cmbBxUserProfiles.setEnabled(true);</span>
+<span class="nc" id="L413">            txtFldPlayerName.setEnabled(false);</span>
+<span class="nc" id="L414">            cmbBxUserProfiles.setEnabled(true);</span>
         }
-<span class="nc" id="L414">    }//GEN-LAST:event_rdBtnRegisteredPlayerActionPerformed</span>
+<span class="nc" id="L416">    }//GEN-LAST:event_rdBtnRegisteredPlayerActionPerformed</span>
 
     private void cmbBxUserProfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxUserProfilesActionPerformed
-<span class="nc" id="L417">        int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
-<span class="nc" id="L418">        UserProfile user = system.getProfiles().get(userNumber);</span>
-<span class="nc" id="L419">        rdBtnChooseImage.setSelected(true);</span>
-<span class="nc" id="L420">        rdBtnChooseColor.setSelected(false);</span>
-<span class="nc" id="L421">        currentImage = user.getImage();</span>
-<span class="nc" id="L422">        currentColor = null;</span>
-<span class="nc" id="L423">        lblIdentifierChosen.setIcon(currentImage);</span>
-<span class="nc" id="L424">    }//GEN-LAST:event_cmbBxUserProfilesActionPerformed</span>
+<span class="nc" id="L419">        int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
+<span class="nc" id="L420">        UserProfile user = system.getProfiles().get(userNumber);</span>
+<span class="nc" id="L421">        rdBtnChooseImage.setSelected(true);</span>
+<span class="nc" id="L422">        rdBtnChooseColor.setSelected(false);</span>
+<span class="nc" id="L423">        currentImage = user.getImage();</span>
+<span class="nc" id="L424">        currentColor = null;</span>
+<span class="nc" id="L425">        lblIdentifierChosen.setIcon(currentImage);</span>
+<span class="nc" id="L426">    }//GEN-LAST:event_cmbBxUserProfilesActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -445,12 +447,12 @@ public class GameSetUp extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean isAlreadyChosen(Player player) {
-<span class="nc bnc" id="L448" title="All 2 branches missed.">        for(int i = 0; i &lt; players.size(); i++){</span>
-<span class="nc bnc" id="L449" title="All 2 branches missed.">            if(players.get(i).getName().equals(player.getName())){</span>
-<span class="nc" id="L450">                return true;</span>
+<span class="nc bnc" id="L450" title="All 2 branches missed.">        for(int i = 0; i &lt; players.size(); i++){</span>
+<span class="nc bnc" id="L451" title="All 2 branches missed.">            if(players.get(i).getName().equals(player.getName())){</span>
+<span class="nc" id="L452">                return true;</span>
             }
         }
-<span class="nc" id="L453">        return false;</span>
+<span class="nc" id="L455">        return false;</span>
    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

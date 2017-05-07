@@ -135,14 +135,14 @@ public class MainMenu extends javax.swing.JFrame {
         try {
             fileOut = new FileOutputStream("savedFiles.txt");
             BufferedOutputStream bufferOut = new BufferedOutputStream(fileOut);
-            ObjectOutputStream out = new ObjectOutputStream(bufferOut);
-            out.writeObject(system);
-            out.flush();
-            out.close();
+            try (ObjectOutputStream out = new ObjectOutputStream(bufferOut)) {
+                out.writeObject(system);
+                out.flush();
+            }
         } catch (FileNotFoundException ex) {
-
+            JOptionPane.showMessageDialog(null, "An error has ocurred while saving the system data, information could have been lost");
         } catch (IOException e) {
-
+            JOptionPane.showMessageDialog(null, "An error has ocurred while saving the system data, information could have been lost");
         }
     }//GEN-LAST:event_formWindowClosing
 

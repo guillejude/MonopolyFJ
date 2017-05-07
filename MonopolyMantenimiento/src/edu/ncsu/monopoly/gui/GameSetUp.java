@@ -391,7 +391,9 @@ public class GameSetUp extends javax.swing.JFrame {
             currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
             lblIdentifierChosen.setIcon(currentImage);
             currentColor = null;
-        } catch (Exception ex) {
+        }catch(RuntimeException ex){
+            
+        }catch (Exception ex) {
             rdBtnChooseColor.setSelected(true);
             rdBtnChooseImage.setSelected(false);
         }
