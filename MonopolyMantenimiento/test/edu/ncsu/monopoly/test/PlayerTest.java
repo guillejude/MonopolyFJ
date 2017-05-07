@@ -6,6 +6,7 @@ import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.Player;
 import edu.ncsu.monopoly.PropertyCell;
 import edu.ncsu.monopoly.SimpleGameBoard;
+import edu.ncsu.monopoly.UserProfile;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import static junit.framework.Assert.assertEquals;
@@ -143,5 +144,12 @@ public class PlayerTest extends TestCase {
         gameMaster.btnEndTurnClicked();
         gameMaster.getPlayer(0).exchangeProperty(null);
         assertEquals(0, gameMaster.getPlayer(0).getAllProperties().length);
+    }
+    
+    public void testUserProfile(){
+        Player player = new Player();
+        UserProfile userProfile = new UserProfile();
+        player.setUserProfile(userProfile);
+        assertEquals(userProfile, player.getUserProfile());
     }
 }

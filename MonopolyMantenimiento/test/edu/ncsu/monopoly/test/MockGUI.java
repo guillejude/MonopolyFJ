@@ -104,4 +104,16 @@ public class MockGUI implements MonopolyGUI {
     public int showTaxiMovement() {
         return 3;
     }
+    
+    public void anounceWinner(String name){
+        
+    }
+    
+    public void anouncePassByGo(){
+        
+    }
+    
+    public void close(){
+        
+    }
 }

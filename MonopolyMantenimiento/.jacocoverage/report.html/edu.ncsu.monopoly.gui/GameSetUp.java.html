@@ -86,12 +86,13 @@ public class GameSetUp extends javax.swing.JFrame {
 <span class="nc" id="L86">            player.setPlayerColor(players.get(i).getPlayerColor());</span>
 <span class="nc" id="L87">            player.setPlayerImage(players.get(i).getPlayerImage());</span>
 <span class="nc" id="L88">            player.setPlaysWithImage(players.get(i).isPlaysWithImage());</span>
+<span class="nc" id="L89">            player.setUserProfile(players.get(i).getUserProfile());</span>
         }
-<span class="nc" id="L90">        window.setupGameBoard(gameBoard);</span>
-<span class="nc" id="L91">        window.show();</span>
-<span class="nc" id="L92">        master.setGUI(window);</span>
-<span class="nc" id="L93">        master.startGame();</span>
-<span class="nc" id="L94">    }</span>
+<span class="nc" id="L91">        window.setupGameBoard(gameBoard);</span>
+<span class="nc" id="L92">        window.show();</span>
+<span class="nc" id="L93">        master.setGUI(window);</span>
+<span class="nc" id="L94">        master.startGame();</span>
+<span class="nc" id="L95">    }</span>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,332 +103,334 @@ public class GameSetUp extends javax.swing.JFrame {
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L105">        btnGrpIdentifier = new javax.swing.ButtonGroup();</span>
-<span class="nc" id="L106">        btnGrpName = new javax.swing.ButtonGroup();</span>
-<span class="nc" id="L107">        lblGameSetUp = new javax.swing.JLabel();</span>
-<span class="nc" id="L108">        lblNumPlayers = new javax.swing.JLabel();</span>
-<span class="nc" id="L109">        cmbBxNumPlayers = new javax.swing.JComboBox();</span>
-<span class="nc" id="L110">        lblPlayerName = new javax.swing.JLabel();</span>
-<span class="nc" id="L111">        txtFldPlayerName = new javax.swing.JTextField();</span>
-<span class="nc" id="L112">        lblPlayerInfo = new javax.swing.JLabel();</span>
-<span class="nc" id="L113">        btnInputInfo = new javax.swing.JButton();</span>
-<span class="nc" id="L114">        rdBtnChooseColor = new javax.swing.JRadioButton();</span>
-<span class="nc" id="L115">        rdBtnChooseImage = new javax.swing.JRadioButton();</span>
-<span class="nc" id="L116">        lblIdentifierChosen = new javax.swing.JLabel();</span>
-<span class="nc" id="L117">        lblOrIdentifier = new javax.swing.JLabel();</span>
-<span class="nc" id="L118">        rdBtnNewPlayer = new javax.swing.JRadioButton();</span>
-<span class="nc" id="L119">        rdBtnRegisteredPlayer = new javax.swing.JRadioButton();</span>
-<span class="nc" id="L120">        lblOrName = new javax.swing.JLabel();</span>
-<span class="nc" id="L121">        cmbBxUserProfiles = new javax.swing.JComboBox();</span>
+<span class="nc" id="L106">        btnGrpIdentifier = new javax.swing.ButtonGroup();</span>
+<span class="nc" id="L107">        btnGrpName = new javax.swing.ButtonGroup();</span>
+<span class="nc" id="L108">        lblGameSetUp = new javax.swing.JLabel();</span>
+<span class="nc" id="L109">        lblNumPlayers = new javax.swing.JLabel();</span>
+<span class="nc" id="L110">        cmbBxNumPlayers = new javax.swing.JComboBox();</span>
+<span class="nc" id="L111">        lblPlayerName = new javax.swing.JLabel();</span>
+<span class="nc" id="L112">        txtFldPlayerName = new javax.swing.JTextField();</span>
+<span class="nc" id="L113">        lblPlayerInfo = new javax.swing.JLabel();</span>
+<span class="nc" id="L114">        btnInputInfo = new javax.swing.JButton();</span>
+<span class="nc" id="L115">        rdBtnChooseColor = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L116">        rdBtnChooseImage = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L117">        lblIdentifierChosen = new javax.swing.JLabel();</span>
+<span class="nc" id="L118">        lblOrIdentifier = new javax.swing.JLabel();</span>
+<span class="nc" id="L119">        rdBtnNewPlayer = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L120">        rdBtnRegisteredPlayer = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L121">        lblOrName = new javax.swing.JLabel();</span>
+<span class="nc" id="L122">        cmbBxUserProfiles = new javax.swing.JComboBox();</span>
 
-<span class="nc" id="L123">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L124">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+<span class="nc" id="L124">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L125">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
             public void windowClosing(java.awt.event.WindowEvent evt) {
-<span class="nc" id="L126">                formWindowClosing(evt);</span>
-<span class="nc" id="L127">            }</span>
+<span class="nc" id="L127">                formWindowClosing(evt);</span>
+<span class="nc" id="L128">            }</span>
         });
 
-<span class="nc" id="L130">        lblGameSetUp.setText(&quot;GAME SETUP&quot;);</span>
+<span class="nc" id="L131">        lblGameSetUp.setText(&quot;GAME SETUP&quot;);</span>
 
-<span class="nc" id="L132">        lblNumPlayers.setText(&quot;Number of Players:&quot;);</span>
+<span class="nc" id="L133">        lblNumPlayers.setText(&quot;Number of Players:&quot;);</span>
 
-<span class="nc" id="L134">        cmbBxNumPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot; }));</span>
-<span class="nc" id="L135">        cmbBxNumPlayers.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+<span class="nc" id="L135">        cmbBxNumPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot; }));</span>
+<span class="nc" id="L136">        cmbBxNumPlayers.addMouseListener(new java.awt.event.MouseAdapter() {</span>
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-<span class="nc" id="L137">                cmbBxNumPlayersMouseClicked(evt);</span>
-<span class="nc" id="L138">            }</span>
+<span class="nc" id="L138">                cmbBxNumPlayersMouseClicked(evt);</span>
+<span class="nc" id="L139">            }</span>
         });
-<span class="nc" id="L140">        cmbBxNumPlayers.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L141">        cmbBxNumPlayers.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L142">                cmbBxNumPlayersActionPerformed(evt);</span>
-<span class="nc" id="L143">            }</span>
+<span class="nc" id="L143">                cmbBxNumPlayersActionPerformed(evt);</span>
+<span class="nc" id="L144">            }</span>
         });
 
-<span class="nc" id="L146">        lblPlayerName.setText(&quot;Player Name: &quot;);</span>
+<span class="nc" id="L147">        lblPlayerName.setText(&quot;Player Name: &quot;);</span>
 
-<span class="nc" id="L148">        lblPlayerInfo.setText(&quot;Player 1 Info&quot;);</span>
+<span class="nc" id="L149">        lblPlayerInfo.setText(&quot;Player 1 Info&quot;);</span>
 
-<span class="nc" id="L150">        btnInputInfo.setText(&quot;OK&quot;);</span>
-<span class="nc" id="L151">        btnInputInfo.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+<span class="nc" id="L151">        btnInputInfo.setText(&quot;OK&quot;);</span>
+<span class="nc" id="L152">        btnInputInfo.addMouseListener(new java.awt.event.MouseAdapter() {</span>
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-<span class="nc" id="L153">                btnInputInfoMouseClicked(evt);</span>
-<span class="nc" id="L154">            }</span>
+<span class="nc" id="L154">                btnInputInfoMouseClicked(evt);</span>
+<span class="nc" id="L155">            }</span>
         });
 
-<span class="nc" id="L157">        rdBtnChooseColor.setText(&quot;Choose Color&quot;);</span>
-<span class="nc" id="L158">        rdBtnChooseColor.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L158">        rdBtnChooseColor.setText(&quot;Choose Color&quot;);</span>
+<span class="nc" id="L159">        rdBtnChooseColor.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L160">                rdBtnChooseColorActionPerformed(evt);</span>
-<span class="nc" id="L161">            }</span>
+<span class="nc" id="L161">                rdBtnChooseColorActionPerformed(evt);</span>
+<span class="nc" id="L162">            }</span>
         });
 
-<span class="nc" id="L164">        rdBtnChooseImage.setText(&quot;Choose Image&quot;);</span>
-<span class="nc" id="L165">        rdBtnChooseImage.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L165">        rdBtnChooseImage.setText(&quot;Choose Image&quot;);</span>
+<span class="nc" id="L166">        rdBtnChooseImage.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L167">                rdBtnChooseImageActionPerformed(evt);</span>
-<span class="nc" id="L168">            }</span>
+<span class="nc" id="L168">                rdBtnChooseImageActionPerformed(evt);</span>
+<span class="nc" id="L169">            }</span>
         });
 
-<span class="nc" id="L171">        lblOrIdentifier.setText(&quot;or&quot;);</span>
+<span class="nc" id="L172">        lblOrIdentifier.setText(&quot;or&quot;);</span>
 
-<span class="nc" id="L173">        rdBtnNewPlayer.setText(&quot;Play As New Player &quot;);</span>
-<span class="nc" id="L174">        rdBtnNewPlayer.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L174">        rdBtnNewPlayer.setText(&quot;Play As New Player &quot;);</span>
+<span class="nc" id="L175">        rdBtnNewPlayer.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L176">                rdBtnNewPlayerActionPerformed(evt);</span>
-<span class="nc" id="L177">            }</span>
+<span class="nc" id="L177">                rdBtnNewPlayerActionPerformed(evt);</span>
+<span class="nc" id="L178">            }</span>
         });
 
-<span class="nc" id="L180">        rdBtnRegisteredPlayer.setText(&quot;Play With A Registered Profile&quot;);</span>
-<span class="nc" id="L181">        rdBtnRegisteredPlayer.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L181">        rdBtnRegisteredPlayer.setText(&quot;Play With A Registered Profile&quot;);</span>
+<span class="nc" id="L182">        rdBtnRegisteredPlayer.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L183">                rdBtnRegisteredPlayerActionPerformed(evt);</span>
-<span class="nc" id="L184">            }</span>
+<span class="nc" id="L184">                rdBtnRegisteredPlayerActionPerformed(evt);</span>
+<span class="nc" id="L185">            }</span>
         });
 
-<span class="nc" id="L187">        lblOrName.setText(&quot;or&quot;);</span>
+<span class="nc" id="L188">        lblOrName.setText(&quot;or&quot;);</span>
 
-<span class="nc" id="L189">        cmbBxUserProfiles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;Item 1&quot;, &quot;Item 2&quot;, &quot;Item 3&quot;, &quot;Item 4&quot; }));</span>
-<span class="nc" id="L190">        cmbBxUserProfiles.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L190">        cmbBxUserProfiles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;Item 1&quot;, &quot;Item 2&quot;, &quot;Item 3&quot;, &quot;Item 4&quot; }));</span>
+<span class="nc" id="L191">        cmbBxUserProfiles.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L192">                cmbBxUserProfilesActionPerformed(evt);</span>
-<span class="nc" id="L193">            }</span>
+<span class="nc" id="L193">                cmbBxUserProfilesActionPerformed(evt);</span>
+<span class="nc" id="L194">            }</span>
         });
 
-<span class="nc" id="L196">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L197">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L198">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L199">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L200">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L201">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L202">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L203">                    .addComponent(rdBtnChooseImage)</span>
-<span class="nc" id="L204">                    .addComponent(rdBtnChooseColor))</span>
-<span class="nc" id="L205">                .addGap(145, 145, 145))</span>
-<span class="nc" id="L206">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L207">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L208">                .addComponent(lblIdentifierChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L209">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-<span class="nc" id="L210">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L211">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L212">                .addComponent(btnInputInfo)</span>
-<span class="nc" id="L213">                .addGap(173, 173, 173))</span>
-<span class="nc" id="L214">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L215">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L216">                .addComponent(lblOrIdentifier)</span>
-<span class="nc" id="L217">                .addGap(192, 192, 192))</span>
-<span class="nc" id="L218">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L219">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L220">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L221">                        .addGap(162, 162, 162)</span>
-<span class="nc" id="L222">                        .addComponent(lblGameSetUp))</span>
-<span class="nc" id="L223">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L224">                        .addGap(164, 164, 164)</span>
-<span class="nc" id="L225">                        .addComponent(lblPlayerInfo)))</span>
-<span class="nc" id="L226">                .addContainerGap(163, Short.MAX_VALUE))</span>
-<span class="nc" id="L227">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L228">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L229">                .addComponent(rdBtnNewPlayer)</span>
-<span class="nc" id="L230">                .addGap(125, 125, 125))</span>
-<span class="nc" id="L231">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L232">                .addGap(109, 109, 109)</span>
-<span class="nc" id="L233">                .addComponent(lblNumPlayers)</span>
-<span class="nc" id="L234">                .addGap(34, 34, 34)</span>
-<span class="nc" id="L235">                .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L236">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-<span class="nc" id="L237">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L238">                .addGap(72, 72, 72)</span>
-<span class="nc" id="L239">                .addComponent(lblPlayerName)</span>
-<span class="nc" id="L240">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L241">                .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L242">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-<span class="nc" id="L243">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L244">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L245">                .addComponent(lblOrName)</span>
-<span class="nc" id="L246">                .addGap(193, 193, 193))</span>
-<span class="nc" id="L247">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L248">                .addContainerGap(107, Short.MAX_VALUE)</span>
-<span class="nc" id="L249">                .addComponent(rdBtnRegisteredPlayer)</span>
-<span class="nc" id="L250">                .addGap(94, 94, 94))</span>
-<span class="nc" id="L251">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L252">                .addGap(131, 131, 131)</span>
-<span class="nc" id="L253">                .addComponent(cmbBxUserProfiles, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L254">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L197">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L198">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L199">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L200">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L201">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L202">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L203">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L204">                    .addComponent(rdBtnChooseImage)</span>
+<span class="nc" id="L205">                    .addComponent(rdBtnChooseColor))</span>
+<span class="nc" id="L206">                .addGap(145, 145, 145))</span>
+<span class="nc" id="L207">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L208">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L209">                .addComponent(lblIdentifierChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L210">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L211">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L212">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L213">                .addComponent(btnInputInfo)</span>
+<span class="nc" id="L214">                .addGap(173, 173, 173))</span>
+<span class="nc" id="L215">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L216">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L217">                .addComponent(lblOrIdentifier)</span>
+<span class="nc" id="L218">                .addGap(192, 192, 192))</span>
+<span class="nc" id="L219">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L220">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L221">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L222">                        .addGap(162, 162, 162)</span>
+<span class="nc" id="L223">                        .addComponent(lblGameSetUp))</span>
+<span class="nc" id="L224">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L225">                        .addGap(164, 164, 164)</span>
+<span class="nc" id="L226">                        .addComponent(lblPlayerInfo)))</span>
+<span class="nc" id="L227">                .addContainerGap(163, Short.MAX_VALUE))</span>
+<span class="nc" id="L228">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L229">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L230">                .addComponent(rdBtnNewPlayer)</span>
+<span class="nc" id="L231">                .addGap(125, 125, 125))</span>
+<span class="nc" id="L232">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L233">                .addGap(109, 109, 109)</span>
+<span class="nc" id="L234">                .addComponent(lblNumPlayers)</span>
+<span class="nc" id="L235">                .addGap(34, 34, 34)</span>
+<span class="nc" id="L236">                .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L237">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L238">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L239">                .addGap(72, 72, 72)</span>
+<span class="nc" id="L240">                .addComponent(lblPlayerName)</span>
+<span class="nc" id="L241">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L242">                .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L243">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L244">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L245">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L246">                .addComponent(lblOrName)</span>
+<span class="nc" id="L247">                .addGap(193, 193, 193))</span>
+<span class="nc" id="L248">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L249">                .addContainerGap(107, Short.MAX_VALUE)</span>
+<span class="nc" id="L250">                .addComponent(rdBtnRegisteredPlayer)</span>
+<span class="nc" id="L251">                .addGap(94, 94, 94))</span>
+<span class="nc" id="L252">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L253">                .addGap(131, 131, 131)</span>
+<span class="nc" id="L254">                .addComponent(cmbBxUserProfiles, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L255">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
         );
-<span class="nc" id="L256">        layout.setVerticalGroup(</span>
-<span class="nc" id="L257">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L258">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L259">                .addContainerGap()</span>
-<span class="nc" id="L260">                .addComponent(lblGameSetUp)</span>
-<span class="nc" id="L261">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L262">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L263">                    .addComponent(lblNumPlayers)</span>
-<span class="nc" id="L264">                    .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L265">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L266">                .addComponent(lblPlayerInfo)</span>
-<span class="nc" id="L267">                .addGap(7, 7, 7)</span>
-<span class="nc" id="L268">                .addComponent(rdBtnNewPlayer)</span>
-<span class="nc" id="L269">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L270">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L271">                    .addComponent(lblPlayerName)</span>
-<span class="nc" id="L272">                    .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L273">                .addGap(4, 4, 4)</span>
-<span class="nc" id="L274">                .addComponent(lblOrName)</span>
-<span class="nc" id="L275">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L276">                .addComponent(rdBtnRegisteredPlayer)</span>
-<span class="nc" id="L277">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L278">                .addComponent(cmbBxUserProfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L279">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)</span>
-<span class="nc" id="L280">                .addComponent(rdBtnChooseColor)</span>
-<span class="nc" id="L281">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L282">                .addComponent(lblOrIdentifier)</span>
-<span class="nc" id="L283">                .addGap(2, 2, 2)</span>
-<span class="nc" id="L284">                .addComponent(rdBtnChooseImage)</span>
-<span class="nc" id="L285">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L286">                .addComponent(lblIdentifierChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L287">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L288">                .addComponent(btnInputInfo)</span>
-<span class="nc" id="L289">                .addGap(7, 7, 7))</span>
+<span class="nc" id="L257">        layout.setVerticalGroup(</span>
+<span class="nc" id="L258">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L259">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L260">                .addContainerGap()</span>
+<span class="nc" id="L261">                .addComponent(lblGameSetUp)</span>
+<span class="nc" id="L262">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L263">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L264">                    .addComponent(lblNumPlayers)</span>
+<span class="nc" id="L265">                    .addComponent(cmbBxNumPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L266">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L267">                .addComponent(lblPlayerInfo)</span>
+<span class="nc" id="L268">                .addGap(7, 7, 7)</span>
+<span class="nc" id="L269">                .addComponent(rdBtnNewPlayer)</span>
+<span class="nc" id="L270">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L271">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L272">                    .addComponent(lblPlayerName)</span>
+<span class="nc" id="L273">                    .addComponent(txtFldPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L274">                .addGap(4, 4, 4)</span>
+<span class="nc" id="L275">                .addComponent(lblOrName)</span>
+<span class="nc" id="L276">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L277">                .addComponent(rdBtnRegisteredPlayer)</span>
+<span class="nc" id="L278">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L279">                .addComponent(cmbBxUserProfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L280">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)</span>
+<span class="nc" id="L281">                .addComponent(rdBtnChooseColor)</span>
+<span class="nc" id="L282">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L283">                .addComponent(lblOrIdentifier)</span>
+<span class="nc" id="L284">                .addGap(2, 2, 2)</span>
+<span class="nc" id="L285">                .addComponent(rdBtnChooseImage)</span>
+<span class="nc" id="L286">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L287">                .addComponent(lblIdentifierChosen, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L288">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L289">                .addComponent(btnInputInfo)</span>
+<span class="nc" id="L290">                .addGap(7, 7, 7))</span>
         );
 
-<span class="nc" id="L292">        pack();</span>
-<span class="nc" id="L293">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L293">        pack();</span>
+<span class="nc" id="L294">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-<span class="nc" id="L296">        this.parent.setVisible(true);</span>
-<span class="nc" id="L297">        this.parent.setEnabled(true);</span>
-<span class="nc" id="L298">    }//GEN-LAST:event_formWindowClosing</span>
+<span class="nc" id="L297">        this.parent.setVisible(true);</span>
+<span class="nc" id="L298">        this.parent.setEnabled(true);</span>
+<span class="nc" id="L299">    }//GEN-LAST:event_formWindowClosing</span>
 
     private void cmbBxNumPlayersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbBxNumPlayersMouseClicked
 
-<span class="nc" id="L302">    }//GEN-LAST:event_cmbBxNumPlayersMouseClicked</span>
+<span class="nc" id="L303">    }//GEN-LAST:event_cmbBxNumPlayersMouseClicked</span>
 
     private void btnInputInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputInfoMouseClicked
         String name;
-<span class="nc" id="L306">        boolean inputsAreValid = false;</span>
-<span class="nc" id="L307">        Player player = new Player();</span>
-<span class="nc bnc" id="L308" title="All 2 branches missed.">        if (rdBtnRegisteredPlayer.isSelected()) {</span>
-<span class="nc" id="L309">            int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
-<span class="nc" id="L310">            UserProfile userSelected = system.getProfiles().get(userNumber);</span>
-<span class="nc" id="L311">            name = userSelected.getName();</span>
-<span class="nc" id="L312">            inputsAreValid = true;</span>
-<span class="nc" id="L313">        } else {</span>
-<span class="nc" id="L314">            name = txtFldPlayerName.getText();</span>
-<span class="nc bnc" id="L315" title="All 2 branches missed.">            if (name.isEmpty()) {</span>
-<span class="nc" id="L316">                JOptionPane.showMessageDialog(null, &quot;Name must not be empty&quot;);</span>
-<span class="nc" id="L317">                inputsAreValid = false;</span>
+<span class="nc" id="L307">        boolean inputsAreValid = false;</span>
+<span class="nc" id="L308">        Player player = new Player();</span>
+<span class="nc bnc" id="L309" title="All 2 branches missed.">        if (rdBtnRegisteredPlayer.isSelected()) {</span>
+<span class="nc" id="L310">            int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
+<span class="nc" id="L311">            UserProfile userSelected = system.getProfiles().get(userNumber);</span>
+<span class="nc" id="L312">            player.setUserProfile(userSelected);</span>
+<span class="nc" id="L313">            name = userSelected.getName();</span>
+<span class="nc" id="L314">            inputsAreValid = true;</span>
+<span class="nc" id="L315">        } else {</span>
+<span class="nc" id="L316">            name = txtFldPlayerName.getText();</span>
+<span class="nc" id="L317">            player.setUserProfile(new UserProfile());</span>
+<span class="nc bnc" id="L318" title="All 2 branches missed.">            if (name.isEmpty()) {</span>
+<span class="nc" id="L319">                JOptionPane.showMessageDialog(null, &quot;Name must not be empty&quot;);</span>
+<span class="nc" id="L320">                inputsAreValid = false;</span>
             } else {
-<span class="nc" id="L319">                inputsAreValid = true;</span>
+<span class="nc" id="L322">                inputsAreValid = true;</span>
             }
         }
-<span class="nc bnc" id="L322" title="All 4 branches missed.">        if (rdBtnChooseImage.isSelected() || rdBtnChooseColor.isSelected()) {</span>
+<span class="nc bnc" id="L325" title="All 4 branches missed.">        if (rdBtnChooseImage.isSelected() || rdBtnChooseColor.isSelected()) {</span>
 
         } else {
-<span class="nc" id="L325">            JOptionPane.showMessageDialog(null, &quot;You must choose a color or an image to identify yourself with&quot;);</span>
-<span class="nc" id="L326">            inputsAreValid = false;</span>
+<span class="nc" id="L328">            JOptionPane.showMessageDialog(null, &quot;You must choose a color or an image to identify yourself with&quot;);</span>
+<span class="nc" id="L329">            inputsAreValid = false;</span>
         }
-<span class="nc bnc" id="L328" title="All 2 branches missed.">        if (inputsAreValid) {</span>
-<span class="nc" id="L329">            player.setName(name);</span>
-<span class="nc bnc" id="L330" title="All 2 branches missed.">            if (isAlreadyChosen(player)) {</span>
-<span class="nc" id="L331">                JOptionPane.showMessageDialog(null, &quot;Name and/or User profile already chosen for this game, please chose another&quot;);</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">        if (inputsAreValid) {</span>
+<span class="nc" id="L332">            player.setName(name);</span>
+<span class="nc bnc" id="L333" title="All 2 branches missed.">            if (isAlreadyChosen(player)) {</span>
+<span class="nc" id="L334">                JOptionPane.showMessageDialog(null, &quot;Name and/or User profile already chosen for this game, please chose another&quot;);</span>
             } else {
-<span class="nc" id="L333">                player.setPlayerColor(currentColor);</span>
-<span class="nc" id="L334">                player.setPlayerImage(currentImage);</span>
-<span class="nc bnc" id="L335" title="All 2 branches missed.">                if (currentImage == null) {</span>
-<span class="nc" id="L336">                    player.setPlaysWithImage(false);</span>
+<span class="nc" id="L336">                player.setPlayerColor(currentColor);</span>
+<span class="nc" id="L337">                player.setPlayerImage(currentImage);</span>
+<span class="nc bnc" id="L338" title="All 2 branches missed.">                if (currentImage == null) {</span>
+<span class="nc" id="L339">                    player.setPlaysWithImage(false);</span>
                 } else {
-<span class="nc" id="L338">                    player.setPlaysWithImage(true);</span>
+<span class="nc" id="L341">                    player.setPlaysWithImage(true);</span>
                 }
 
-<span class="nc" id="L341">                players.add(player);</span>
-<span class="nc bnc" id="L342" title="All 2 branches missed.">                if (playerNumber == numberOfPlayers) {</span>
-<span class="nc" id="L343">                    startGame();</span>
-<span class="nc" id="L344">                    this.dispose();</span>
+<span class="nc" id="L344">                players.add(player);</span>
+<span class="nc bnc" id="L345" title="All 2 branches missed.">                if (playerNumber == numberOfPlayers) {</span>
+<span class="nc" id="L346">                    startGame();</span>
+<span class="nc" id="L347">                    this.dispose();</span>
                 } else {
-<span class="nc" id="L346">                    prepareInputForNextPlayer();</span>
+<span class="nc" id="L349">                    prepareInputForNextPlayer();</span>
                 }
             }
         }
 
 
-<span class="nc" id="L352">    }//GEN-LAST:event_btnInputInfoMouseClicked</span>
+<span class="nc" id="L355">    }//GEN-LAST:event_btnInputInfoMouseClicked</span>
 
     public void prepareInputForNextPlayer() {
         //input info for next player
-<span class="nc" id="L356">        playerNumber++;</span>
-<span class="nc" id="L357">        lblPlayerInfo.setText(&quot;Player &quot; + playerNumber + &quot; Info&quot;);</span>
-<span class="nc" id="L358">        txtFldPlayerName.setText(&quot;&quot;);</span>
-<span class="nc" id="L359">        currentImage = null;</span>
-<span class="nc" id="L360">        currentColor = null;</span>
-<span class="nc" id="L361">        lblIdentifierChosen.setIcon(null);</span>
-<span class="nc" id="L362">        txtFldPlayerName.setEnabled(true);</span>
-<span class="nc" id="L363">        cmbBxUserProfiles.setEnabled(false);</span>
-<span class="nc" id="L364">        rdBtnNewPlayer.setSelected(true);</span>
-<span class="nc" id="L365">        resetIdentifier();</span>
-<span class="nc" id="L366">    }</span>
+<span class="nc" id="L359">        playerNumber++;</span>
+<span class="nc" id="L360">        lblPlayerInfo.setText(&quot;Player &quot; + playerNumber + &quot; Info&quot;);</span>
+<span class="nc" id="L361">        txtFldPlayerName.setText(&quot;&quot;);</span>
+<span class="nc" id="L362">        currentImage = null;</span>
+<span class="nc" id="L363">        currentColor = null;</span>
+<span class="nc" id="L364">        lblIdentifierChosen.setIcon(null);</span>
+<span class="nc" id="L365">        txtFldPlayerName.setEnabled(true);</span>
+<span class="nc" id="L366">        cmbBxUserProfiles.setEnabled(false);</span>
+<span class="nc" id="L367">        rdBtnNewPlayer.setSelected(true);</span>
+<span class="nc" id="L368">        resetIdentifier();</span>
+<span class="nc" id="L369">    }</span>
     private void cmbBxNumPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxNumPlayersActionPerformed
         //Reset the input of player's info
-<span class="nc" id="L369">        playerNumber = 0;</span>
-<span class="nc" id="L370">        numberOfPlayers = Integer.parseInt((String) cmbBxNumPlayers.getSelectedItem());</span>
-<span class="nc" id="L371">        prepareInputForNextPlayer();</span>
-<span class="nc" id="L372">        players = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L373">    }//GEN-LAST:event_cmbBxNumPlayersActionPerformed</span>
+<span class="nc" id="L372">        playerNumber = 0;</span>
+<span class="nc" id="L373">        numberOfPlayers = Integer.parseInt((String) cmbBxNumPlayers.getSelectedItem());</span>
+<span class="nc" id="L374">        prepareInputForNextPlayer();</span>
+<span class="nc" id="L375">        players = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L376">    }//GEN-LAST:event_cmbBxNumPlayersActionPerformed</span>
 
     private void rdBtnChooseColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnChooseColorActionPerformed
-<span class="nc" id="L376">        currentColor = JColorChooser.showDialog(null, &quot;Choose a color&quot;, Color.yellow);</span>
-<span class="nc" id="L377">        currentImage = null;</span>
-<span class="nc" id="L378">        lblIdentifierChosen.setIcon(null);</span>
-<span class="nc" id="L379">        lblIdentifierChosen.setBackground(currentColor);</span>
-<span class="nc bnc" id="L380" title="All 2 branches missed.">        if (currentColor == null) {</span>
-<span class="nc" id="L381">            resetIdentifier();</span>
+<span class="nc" id="L379">        currentColor = JColorChooser.showDialog(null, &quot;Choose a color&quot;, Color.yellow);</span>
+<span class="nc" id="L380">        currentImage = null;</span>
+<span class="nc" id="L381">        lblIdentifierChosen.setIcon(null);</span>
+<span class="nc" id="L382">        lblIdentifierChosen.setBackground(currentColor);</span>
+<span class="nc bnc" id="L383" title="All 2 branches missed.">        if (currentColor == null) {</span>
+<span class="nc" id="L384">            resetIdentifier();</span>
         }
-<span class="nc" id="L383">    }//GEN-LAST:event_rdBtnChooseColorActionPerformed</span>
+<span class="nc" id="L386">    }//GEN-LAST:event_rdBtnChooseColorActionPerformed</span>
 
     private void rdBtnChooseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnChooseImageActionPerformed
-<span class="nc" id="L386">        FileNameExtensionFilter filter = new FileNameExtensionFilter(&quot;Image Files&quot;, &quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;, &quot;jpeg&quot;);</span>
+<span class="nc" id="L389">        FileNameExtensionFilter filter = new FileNameExtensionFilter(&quot;Image Files&quot;, &quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;, &quot;jpeg&quot;);</span>
         //setup new filechooser so that only images can be selected
-<span class="nc" id="L388">        JFileChooser fileChooser = new JFileChooser();</span>
-<span class="nc" id="L389">        fileChooser.setFileFilter(filter);</span>
-<span class="nc" id="L390">        fileChooser.setAcceptAllFileFilterUsed(false);</span>
-<span class="nc" id="L391">        fileChooser.showOpenDialog(this);</span>
-<span class="nc" id="L392">        File imageFile = fileChooser.getSelectedFile();</span>
+<span class="nc" id="L391">        JFileChooser fileChooser = new JFileChooser();</span>
+<span class="nc" id="L392">        fileChooser.setFileFilter(filter);</span>
+<span class="nc" id="L393">        fileChooser.setAcceptAllFileFilterUsed(false);</span>
+<span class="nc" id="L394">        fileChooser.showOpenDialog(this);</span>
+<span class="nc" id="L395">        File imageFile = fileChooser.getSelectedFile();</span>
         try {
             //try to read image, store it and save it
-<span class="nc" id="L395">            BufferedImage image = ImageIO.read(imageFile);</span>
-<span class="nc" id="L396">            currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));</span>
-<span class="nc" id="L397">            lblIdentifierChosen.setIcon(currentImage);</span>
-<span class="nc" id="L398">            currentColor = null;</span>
-<span class="nc" id="L399">        } catch (RuntimeException ex) {</span>
-<span class="nc" id="L400">            resetIdentifier();</span>
-<span class="nc" id="L401">        } catch (Exception ex) {</span>
-<span class="nc" id="L402">            resetIdentifier();</span>
-<span class="nc" id="L403">        }</span>
-<span class="nc" id="L404">    }//GEN-LAST:event_rdBtnChooseImageActionPerformed</span>
+<span class="nc" id="L398">            BufferedImage image = ImageIO.read(imageFile);</span>
+<span class="nc" id="L399">            currentImage = new ImageIcon(image.getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));</span>
+<span class="nc" id="L400">            lblIdentifierChosen.setIcon(currentImage);</span>
+<span class="nc" id="L401">            currentColor = null;</span>
+<span class="nc" id="L402">        } catch (RuntimeException ex) {</span>
+<span class="nc" id="L403">            resetIdentifier();</span>
+<span class="nc" id="L404">        } catch (Exception ex) {</span>
+<span class="nc" id="L405">            resetIdentifier();</span>
+<span class="nc" id="L406">        }</span>
+<span class="nc" id="L407">    }//GEN-LAST:event_rdBtnChooseImageActionPerformed</span>
 
     private void rdBtnNewPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnNewPlayerActionPerformed
-<span class="nc" id="L407">        txtFldPlayerName.setEnabled(true);</span>
-<span class="nc" id="L408">        cmbBxUserProfiles.setEnabled(false);</span>
-<span class="nc" id="L409">    }//GEN-LAST:event_rdBtnNewPlayerActionPerformed</span>
+<span class="nc" id="L410">        txtFldPlayerName.setEnabled(true);</span>
+<span class="nc" id="L411">        cmbBxUserProfiles.setEnabled(false);</span>
+<span class="nc" id="L412">    }//GEN-LAST:event_rdBtnNewPlayerActionPerformed</span>
 
     private void rdBtnRegisteredPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnRegisteredPlayerActionPerformed
-<span class="nc bnc" id="L412" title="All 2 branches missed.">        if (system.getProfiles().size() == 0) {</span>
-<span class="nc" id="L413">            JOptionPane.showMessageDialog(null, &quot;There are no registered user profiles on the system, select to play as a New Player&quot;);</span>
-<span class="nc" id="L414">            txtFldPlayerName.setEnabled(true);</span>
-<span class="nc" id="L415">            cmbBxUserProfiles.setEnabled(false);</span>
+<span class="nc bnc" id="L415" title="All 2 branches missed.">        if (system.getProfiles().size() == 0) {</span>
+<span class="nc" id="L416">            JOptionPane.showMessageDialog(null, &quot;There are no registered user profiles on the system, select to play as a New Player&quot;);</span>
+<span class="nc" id="L417">            txtFldPlayerName.setEnabled(true);</span>
+<span class="nc" id="L418">            cmbBxUserProfiles.setEnabled(false);</span>
         } else {
-<span class="nc" id="L417">            txtFldPlayerName.setEnabled(false);</span>
-<span class="nc" id="L418">            cmbBxUserProfiles.setEnabled(true);</span>
+<span class="nc" id="L420">            txtFldPlayerName.setEnabled(false);</span>
+<span class="nc" id="L421">            cmbBxUserProfiles.setEnabled(true);</span>
         }
-<span class="nc" id="L420">    }//GEN-LAST:event_rdBtnRegisteredPlayerActionPerformed</span>
+<span class="nc" id="L423">    }//GEN-LAST:event_rdBtnRegisteredPlayerActionPerformed</span>
 
     private void cmbBxUserProfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBxUserProfilesActionPerformed
-<span class="nc" id="L423">        int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
-<span class="nc" id="L424">        UserProfile user = system.getProfiles().get(userNumber);</span>
-<span class="nc" id="L425">        rdBtnChooseImage.setSelected(true);</span>
-<span class="nc" id="L426">        rdBtnChooseColor.setSelected(false);</span>
-<span class="nc" id="L427">        currentImage = user.getImage();</span>
-<span class="nc" id="L428">        currentColor = null;</span>
-<span class="nc" id="L429">        lblIdentifierChosen.setIcon(currentImage);</span>
-<span class="nc" id="L430">    }//GEN-LAST:event_cmbBxUserProfilesActionPerformed</span>
+<span class="nc" id="L426">        int userNumber = cmbBxUserProfiles.getSelectedIndex();</span>
+<span class="nc" id="L427">        UserProfile user = system.getProfiles().get(userNumber);</span>
+<span class="nc" id="L428">        rdBtnChooseImage.setSelected(true);</span>
+<span class="nc" id="L429">        rdBtnChooseColor.setSelected(false);</span>
+<span class="nc" id="L430">        currentImage = user.getImage();</span>
+<span class="nc" id="L431">        currentColor = null;</span>
+<span class="nc" id="L432">        lblIdentifierChosen.setIcon(currentImage);</span>
+<span class="nc" id="L433">    }//GEN-LAST:event_cmbBxUserProfilesActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -451,18 +454,18 @@ public class GameSetUp extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean isAlreadyChosen(Player player) {
-<span class="nc bnc" id="L454" title="All 2 branches missed.">        for (int i = 0; i &lt; players.size(); i++) {</span>
-<span class="nc bnc" id="L455" title="All 2 branches missed.">            if (players.get(i).getName().equals(player.getName())) {</span>
-<span class="nc" id="L456">                return true;</span>
+<span class="nc bnc" id="L457" title="All 2 branches missed.">        for (int i = 0; i &lt; players.size(); i++) {</span>
+<span class="nc bnc" id="L458" title="All 2 branches missed.">            if (players.get(i).getName().equals(player.getName())) {</span>
+<span class="nc" id="L459">                return true;</span>
             }
         }
-<span class="nc" id="L459">        return false;</span>
+<span class="nc" id="L462">        return false;</span>
     }
 
     private void resetIdentifier() {
-<span class="nc" id="L463">        btnGrpIdentifier.clearSelection();</span>
-<span class="nc" id="L464">        lblIdentifierChosen.setBackground(null);</span>
-<span class="nc" id="L465">        lblIdentifierChosen.setIcon(null);</span>
-<span class="nc" id="L466">    }</span>
+<span class="nc" id="L466">        btnGrpIdentifier.clearSelection();</span>
+<span class="nc" id="L467">        lblIdentifierChosen.setBackground(null);</span>
+<span class="nc" id="L468">        lblIdentifierChosen.setIcon(null);</span>
+<span class="nc" id="L469">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

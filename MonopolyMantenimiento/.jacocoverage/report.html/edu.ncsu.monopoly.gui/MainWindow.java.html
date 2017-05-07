@@ -244,5 +244,19 @@ public class MainWindow extends JFrame implements MonopolyGUI {
 <span class="nc" id="L244">        }</span>
 <span class="nc" id="L245">        return movement;</span>
     }
+
+    public void close() {
+<span class="nc" id="L249">        this.dispose();</span>
+<span class="nc" id="L250">        parent.setEnabled(true);</span>
+<span class="nc" id="L251">        parent.setVisible(true);</span>
+<span class="nc" id="L252">    }</span>
+
+    public void anounceWinner(String name) {
+<span class="nc" id="L255">        JOptionPane.showMessageDialog(null,name + &quot; has won!&quot;);</span>
+<span class="nc" id="L256">    }</span>
+    
+    public void anouncePassByGo() {
+<span class="nc" id="L259">        JOptionPane.showMessageDialog(null,&quot;Passed through Go, collect $200!&quot;);</span>
+<span class="nc" id="L260">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -32,6 +32,7 @@ public class Player {
             position = gb.queryCell("Go");
         }
         playerColor = Color.GREEN;
+        userProfile = new UserProfile();
     }
 
     public void buyProperty(Cell property, int amount) {
