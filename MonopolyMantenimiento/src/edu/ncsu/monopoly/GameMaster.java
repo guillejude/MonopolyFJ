@@ -344,7 +344,7 @@ public class GameMaster {
             }
         }
         if(numberOfPlayersBankrupt == getNumberOfPlayers()-1){
-            //player winner has won
+            //player 'winner' has won
             gui.anounceWinner(getPlayer(winner).getName());
             gui.close();
             int gamesWon = getPlayer(winner).getUserProfile().getGamesWon() + 1; 

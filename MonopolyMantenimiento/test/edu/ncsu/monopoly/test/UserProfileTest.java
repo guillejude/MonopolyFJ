@@ -54,10 +54,11 @@ public class UserProfileTest extends TestCase{
         assertNull( user.getImage());
     }
     
-    public void testEquals(){
+    public void testEquals1(){
         UserProfile user = new UserProfile("Juan", null);
         UserProfile user2 = new UserProfile();
         user2.setName("Juan");
         assertTrue(user.equals(user2));
     }
+    
 } 

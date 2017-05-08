@@ -48,7 +48,7 @@ public class GameSetUp extends javax.swing.JFrame {
         this.parent = parent;
         this.system = system;
         this.playerNumber = 1;
-        this.numberOfPlayers = 1;
+        this.numberOfPlayers = 2;
         this.players = new ArrayList<>();
         this.currentColor = null;
         this.currentImage = null;
@@ -132,7 +132,7 @@ public class GameSetUp extends javax.swing.JFrame {
 
         lblNumPlayers.setText("Number of Players:");
 
-        cmbBxNumPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+        cmbBxNumPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6", "7", "8" }));
         cmbBxNumPlayers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cmbBxNumPlayersMouseClicked(evt);
